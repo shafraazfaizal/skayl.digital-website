@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* --font-cal-sans and --font-inter are provided by next/font (see layout.tsx). */
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+  }
+  body {
+    @apply bg-cream text-ink font-sans antialiased;
+    font-weight: 400;
+    text-rendering: optimizeLegibility;
+    /* GSAP ScrollSmoother-friendly: no native smooth-scroll fighting it */
+  }
+  /* Cal Sans + Inter are both used at Regular (400) — exactly as in Framer */
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 400;
+  }
+  ::selection {
+    @apply bg-orange text-cream;
+  }
+}
+
+@layer components {
+  .container-skayl {
+    @apply mx-auto w-full max-w-container px-5 md:px-12;
+  }
+  .display {
+    @apply font-display font-normal tracking-tightest;
+  }
+  /* Display heading helpers — these render in Cal Sans (the display face).
+     Without these definitions the classes were inert and headings silently
+     fell back to Inter. */
+  .display-h1,
+  .display-h2 {
+    @apply font-display font-normal tracking-tightest;
+  }
+}
+
+/* The oversized, edge-bleeding section heading — masked fade like Framer's
+   "Cal Sans/H2 204" treatment. The text is clipped by a vertical gradient
+   so it dissolves toward the bottom edge of its frame. */
+.giant-heading {
+  font-family: var(--font-cal-sans);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  /* small top/bottom padding so ascenders/descenders are never clipped */
+  padding: 0.08em 0 0.04em;
+  color: rgba(15, 5, 5, 0.32);
+  /* solid through the upper half, dissolving only toward the bottom */
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 48%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 48%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+.giant-heading--light {
+  color: rgba(245, 240, 225, 0.35);
+}
+
+/* per-character reveal — each glyph fades/blurs up into place */
+.char {
+  display: inline-block;
+  white-space: pre;
+  will-change: transform, opacity, filter;
+}
+
+/* subtle film grain overlay for panels */
+.skayl-grain {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
