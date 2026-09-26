@@ -117,7 +117,7 @@ export default function CTA() {
                   {status === "sending"
                     ? "Sending…"
                     : status === "sent"
-                      ? "Sent — we’ll be in touch إن شاء الله"
+                      ? "Sent — we’ll be in touch"
                       : status === "error"
                         ? "Try again"
                         : "Send it →"}

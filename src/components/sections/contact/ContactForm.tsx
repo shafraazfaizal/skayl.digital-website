@@ -75,7 +75,7 @@ export default function ContactForm() {
           {status === "sending"
             ? "Sending…"
             : status === "sent"
-              ? "Sent — we’ll be in touch إن شاء الله"
+              ? "Sent — we’ll be in touch"
               : "Send it →"}
         </button>
 
