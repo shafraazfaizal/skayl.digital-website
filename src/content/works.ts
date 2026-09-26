@@ -128,6 +128,7 @@ export const works: Work[] = [
     description:
       "Complete branding kit for a premium Ceylon tea brand targeting the Middle East — from packaging to reels, all in one visual language.",
     cover: "/work/shajara-tea/posts/1.jpg",
+    cardBg: "/images/work-cards/shajara-tea.png",
     glow: "#3A6B2A",
     tint: "#070F07",
   },

@@ -8,6 +8,7 @@ import ReelsShowcase from "@/components/sections/works/ReelsShowcase";
 import CTA from "@/components/sections/shared/CTA";
 import { works } from "@/content/works";
 import { caseStudies } from "@/content/case-studies";
+import JmaCaseStudy from "@/components/sections/works/jma/JmaCaseStudy";
 
 export function generateStaticParams() {
   return works.map((w) => ({ slug: w.slug }));
@@ -35,6 +36,12 @@ export default async function WorkDetailPage({
   const { slug } = await params;
   const work = works.find((w) => w.slug === slug);
   if (!work) notFound();
+
+  // Flagship editorial case study
+  if (slug === "jma-uk") {
+    const next = works[(works.indexOf(work) + 1) % works.length];
+    return <JmaCaseStudy work={work} next={next} />;
+  }
 
   const study = caseStudies[slug];
   if (study) {
