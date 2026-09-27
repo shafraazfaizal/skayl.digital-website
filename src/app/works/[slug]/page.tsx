@@ -4,11 +4,12 @@ import Image from "next/image";
 import Container from "@/components/ui/Container";
 import Reveal from "@/components/ui/Reveal";
 import CaseStudy from "@/components/sections/works/CaseStudy";
-import ReelsShowcase from "@/components/sections/works/ReelsShowcase";
 import CTA from "@/components/sections/shared/CTA";
 import { works } from "@/content/works";
 import { caseStudies } from "@/content/case-studies";
 import JmaCaseStudy from "@/components/sections/works/jma/JmaCaseStudy";
+import ShajaraCaseStudy from "@/components/sections/works/shajara/ShajaraCaseStudy";
+import FramedCaseStudy from "@/components/sections/works/framed/FramedCaseStudy";
 
 export function generateStaticParams() {
   return works.map((w) => ({ slug: w.slug }));
@@ -41,6 +42,16 @@ export default async function WorkDetailPage({
   if (slug === "jma-uk") {
     const next = works[(works.indexOf(work) + 1) % works.length];
     return <JmaCaseStudy work={work} next={next} />;
+  }
+
+  if (slug === "framed-splendor") {
+    const next = works.find((w) => w.slug === "autovive") ?? works[0];
+    return <FramedCaseStudy work={work} next={next} />;
+  }
+
+  if (slug === "shajara-tea") {
+    const next = works.find((w) => w.slug === "framed-splendor") ?? works[0];
+    return <ShajaraCaseStudy work={work} next={next} />;
   }
 
   const study = caseStudies[slug];
@@ -120,8 +131,6 @@ export default async function WorkDetailPage({
           </div>
         </Container>
       </section>
-
-      {slug === "zero-excuses" && <ReelsShowcase />}
 
       <CTA />
     </>

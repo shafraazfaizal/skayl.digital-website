@@ -32,3 +32,31 @@ export function firstPublicAsset(...candidates: string[]): string | null {
   }
   return null;
 }
+
+/**
+ * Pixel size of a PNG or JPEG in /public (read from the file header), or
+ * null. Lets layouts show real screenshots at their true proportions.
+ */
+export function imageSize(publicPath: string | null): { w: number; h: number } | null {
+  if (!publicPath) return null;
+  const lower = publicPath.toLowerCase();
+  if (lower.endsWith(".png")) return pngSize(publicPath);
+  if (!/\.jpe?g$/.test(lower)) return null;
+  try {
+    const buf = fs.readFileSync(path.join(process.cwd(), "public", publicPath));
+    let i = 2; // skip SOI
+    while (i < buf.length) {
+      if (buf[i] !== 0xff) return null;
+      const marker = buf[i + 1];
+      const len = buf.readUInt16BE(i + 2);
+      // SOF0–SOF15, excluding DHT (C4), JPG (C8) and DAC (CC)
+      if (marker >= 0xc0 && marker <= 0xcf && ![0xc4, 0xc8, 0xcc].includes(marker)) {
+        return { h: buf.readUInt16BE(i + 5), w: buf.readUInt16BE(i + 7) };
+      }
+      i += 2 + len;
+    }
+    return null;
+  } catch {
+    return null;
+  }
+}

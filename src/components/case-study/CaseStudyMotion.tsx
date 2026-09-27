@@ -19,12 +19,17 @@ const EASE = "expo.out";
  *   data-cs="fade"         fade + rise (y 40 → 0)
  *   data-cs="stagger"      fade + rise each direct child in sequence
  *   data-cs="clip"         clip-path image reveal (+ scale on [data-cs-inner])
+ *   data-cs="draw"         hairline draws in (data-cs-axis="y" for vertical)
  *   data-cs-load           play immediately instead of on scroll (hero)
  *   data-cs-delay="0.2"    extra delay in seconds
  *   data-cs-parallax="8"   scrubbed vertical drift, ±N yPercent
+ *   data-cs-drift="6"      scrubbed horizontal drift, +N → −N xPercent
  *   data-cs-zoom           slow scrubbed scale 1.15 → 1 while in view
  *   data-cs-scrollimg      scrubs an <img> object-position top → bottom
  *   data-cs-autoscroll     loops a tall screenshot inside a phone while in view
+ *   data-cs-focus          touch/small screens: gets .cs-focus while it crosses
+ *                          the middle of the viewport (the wrapper gets
+ *                          .cs-mobile-fx while this is active)
  *
  * Content is fully visible in the server HTML; hidden states are only
  * applied by JS, and never when the user prefers reduced motion.
@@ -89,6 +94,23 @@ export default function CaseStudyMotion({ children }: { children: ReactNode }) {
           });
         });
 
+        // Hairlines that draw themselves (horizontal by default, or "y").
+        q<HTMLElement>('[data-cs="draw"]').forEach((el) => {
+          const vertical = el.getAttribute("data-cs-axis") === "y";
+          gsap.fromTo(
+            el,
+            vertical ? { scaleY: 0 } : { scaleX: 0 },
+            {
+              ...(vertical ? { scaleY: 1 } : { scaleX: 1 }),
+              transformOrigin: vertical ? "top center" : "left center",
+              duration: 1.4,
+              ease: "expo.inOut",
+              delay: delay(el),
+              scrollTrigger: trigger(el),
+            }
+          );
+        });
+
         q<HTMLElement>('[data-cs="clip"]').forEach((el) => {
           const inner = el.querySelector("[data-cs-inner]");
           const tl = gsap.timeline({ delay: delay(el), scrollTrigger: trigger(el) });
@@ -108,6 +130,19 @@ export default function CaseStudyMotion({ children }: { children: ReactNode }) {
             { yPercent: -amt },
             {
               yPercent: amt,
+              ease: "none",
+              scrollTrigger: { trigger: el, start: "top bottom", end: "bottom top", scrub: true },
+            }
+          );
+        });
+
+        q<HTMLElement>("[data-cs-drift]").forEach((el) => {
+          const amt = parseFloat(el.getAttribute("data-cs-drift") || "6");
+          gsap.fromTo(
+            el,
+            { xPercent: amt },
+            {
+              xPercent: -amt,
               ease: "none",
               scrollTrigger: { trigger: el, start: "top bottom", end: "bottom top", scrub: true },
             }
@@ -148,6 +183,24 @@ export default function CaseStudyMotion({ children }: { children: ReactNode }) {
             }
           );
         });
+      });
+
+      // Touch / small screens: what crosses the middle of the screen is "in
+      // focus" — the phone equivalent of desktop hover and pinned states.
+      mm.add("(max-width: 767px) and (prefers-reduced-motion: no-preference)", () => {
+        const q = gsap.utils.selector(root);
+        const els = q<HTMLElement>("[data-cs-focus]");
+        if (!els.length) return;
+        root.current?.classList.add("cs-mobile-fx");
+        els.forEach((el) =>
+          ScrollTrigger.create({
+            trigger: el,
+            start: "top 62%",
+            end: "bottom 38%",
+            toggleClass: { targets: el, className: "cs-focus" },
+          })
+        );
+        return () => root.current?.classList.remove("cs-mobile-fx");
       });
 
       // Web fonts change line lengths — re-measure once they're in.

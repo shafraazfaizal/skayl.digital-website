@@ -1,0 +1,35 @@
+/* Homepage-only styles. Imported by the homepage, so nothing here reaches
+   the rest of the site. */
+
+/* Hero wall: the list is rendered twice; moving the track by exactly half
+   its height loops without a seam. */
+@keyframes home-wall-up {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(0, -50%, 0);
+  }
+}
+
+.home-wall-track {
+  animation: home-wall-up var(--wall-dur, 60s) linear infinite;
+  will-change: transform;
+}
+
+.home-wall {
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0, black 10%, black 88%, transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0, black 10%, black 88%, transparent 100%);
+}
+
+@media (hover: hover) {
+  .home-wall:hover .home-wall-track {
+    animation-play-state: paused;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-wall-track {
+    animation: none;
+  }
+}

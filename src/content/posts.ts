@@ -58,7 +58,7 @@ export const posts: Post[] = [
     tag: "Creative Principle",
     body: [
       "When most people think about video content, music is the first thing they reach for. A track sets the mood, fills the silence, and — if we’re honest — does a lot of the emotional heavy lifting so the visuals don’t have to.",
-      "At SKAYL, we don’t use music. This is a principle rooted in our Islamic values, and it applies consistently across every project we produce.",
+      "At SKAYL, we don’t use music. This is a principle rooted in our Islamic values, and it applies to every project we take on.",
       "What it means in practice is that we have to work harder. Every reel, every brand video, every social clip has to earn its engagement through storytelling, pacing, cinematic visuals, purposeful editing, and authentic sound design. We can’t lean on a trending track to carry the emotion — so we build it into the content itself.",
       "The result is content that connects differently. It doesn’t date. It doesn’t compete with a song people are sick of by next month. It holds its own.",
       "Our clients have seen strong organic reach from content produced this way — not in spite of the no-music approach, but because of the intentionality it demands.",

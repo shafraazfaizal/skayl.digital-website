@@ -1,4 +1,4 @@
-// Homepage content: process, why-us, stats, testimonials, principles teaser, pricing and FAQs.
+// Homepage content: process, why-us, the new homepage sections and FAQs.
 
 export const processSteps = [
   { no: "01", name: "Discover", body: "We learn your business, your audience, and what success actually looks like — before touching any tools." },
@@ -16,61 +16,147 @@ export const whyUs = [
   { title: "UK quality. Global reach.", body: "Based in the UK with an active presence in Sri Lanka. We work with clients across both markets and beyond — time zones have never been an obstacle." },
 ];
 
-// Animated stat counters for the testimonials section.
-export type Stat = {
-  value: number;
-  label: string;
-  prefix?: string;
-  suffix?: string;
-  decimals?: number;
+// ── Homepage (new) ─────────────────────────────────────────────────────────
+// Facts only. No invented clients, quotes, results or numbers.
+
+export const homeHero = {
+  eyebrow: "SKAYL — Creative studio",
+  muted: ["We don’t work", "for you."],
+  strong: ["We work", "with you."],
+  lines: ["One embedded team for brand, web and content.", "Strategy / Design / Development / Content.", "UK & Sri Lanka — working globally."],
+  // The hero wall: one column of real work drifting upwards. Files that don't
+  // exist are skipped, and each shows at its true proportions — so the JMA
+  // screenshots from the case study appear here automatically.
+  wall: [
+    { src: "/work/jma-uk/page-zakat.png", title: "JMA UK", type: "Zakat page" },
+    { src: "/work/jma-uk/hero.png", title: "JMA UK", type: "Website" },
+    { src: "/work/shajara-tea/case/label-flat.jpg", title: "Shajara Tea", type: "Packaging" },
+    { src: "/work/jma-uk/admin.png", title: "JMA UK", type: "Admin dashboard" },
+    { src: "/work/autovive/pitch-deck/1.png", title: "AutoVive", type: "Pitch deck" },
+    { src: "/work/jma-uk/donate.png", title: "JMA UK", type: "Donations" },
+    { src: "/work/framed-splendor/hero.png", title: "Framed Splendor", type: "E-commerce" },
+    { src: "/work/jma-uk/page-campaigns.png", title: "JMA UK", type: "Campaigns" },
+    { src: "/work/autovive/pitch-deck/4.png", title: "AutoVive", type: "Pitch deck" },
+    { src: "/work/jma-uk/content-gallery.png", title: "JMA UK", type: "Gallery" },
+    { src: "/work/shajara-tea/case/pack-stack.jpg", title: "Shajara Tea", type: "Packaging" },
+    { src: "/work/jma-uk/content-events.png", title: "JMA UK", type: "Events" },
+  ],
 };
 
-export const stats: Stat[] = [
-  { value: 4, suffix: "+", label: "Brands Served" },
-  { value: 100, suffix: "%", label: "In-House Delivery" },
-  { value: 2.4, prefix: "£", suffix: "M+", label: "Raised Through Platforms We Built", decimals: 1 },
-];
+export const marquee = {
+  eyebrow: "What we do",
+  rows: [
+    ["Strategy", "Design", "Development", "Content"],
+    ["Brand", "Web", "Film", "Photography", "Events"],
+  ],
+};
 
-export const testimonials = [
-  {
-    quote:
-      "It's professional — it actually works for our community. Our team can publish campaigns and news without any technical knowledge, and it reflects our Islamic values. Alhamdulillah, we're very pleased with what has been delivered.",
-    author: "Secretary",
-    role: "Jaffna Muslim Association UK",
-    image:
-      "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?crop=entropy&cs=srgb&fm=jpg&ixlib=rb-4.1.0&q=85&w=1400",
+export const selectedWork = {
+  eyebrow: "Selected work",
+  title: ["What", "we’ve", "built."],
+  body: "Brands, platforms and content — each one built from scratch, all of it in-house.",
+  flagship: {
+    slug: "jma-uk",
+    label: "Flagship",
+    lede: "A charity with over two decades of work and no digital home. We built its entire platform — website, giving, publishing and infrastructure — at no cost to JMA.",
+    facts: [
+      { value: "15+", label: "Pages" },
+      { value: "12", label: "Admin modules" },
+      { value: "05", label: "Giving categories" },
+      { value: "£0", label: "Cost to JMA" },
+    ],
+    // real screens from the case study; each appears only if the file exists
+    screens: {
+      laptop: "/work/jma-uk/hero.png",
+      admin: "/work/jma-uk/admin.png",
+      donate: "/work/jma-uk/donate.png",
+      phone: "/work/jma-uk/mobile-1.png",
+    },
   },
-  {
-    quote:
-      "SKAYL understood the brand before we could even explain it. The identity they delivered feels timeless — every touchpoint finally speaks the same language.",
-    author: "Founder",
-    role: "Framed Splendor",
-    image:
-      "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?crop=entropy&cs=srgb&fm=jpg&ixlib=rb-4.1.0&q=85&w=1400",
-  },
-  {
-    quote:
-      "The reels hit different. Our engagement doubled and sign-ups followed — content that actually moves people, not just looks good.",
-    author: "Owner",
-    role: "Zero Excuses Gym",
-    image:
-      "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?crop=entropy&cs=srgb&fm=jpg&ixlib=rb-4.1.0&q=85&w=1400",
-  },
-];
+  more: [
+    {
+      slug: "shajara-tea",
+      line: "A Sri Lankan tea brand with an Arabic soul, designed for the Middle East.",
+      image: "/images/work-cards/shajara-tea.png",
+      position: "50% 55%",
+      tone: "#12281D",
+    },
+    {
+      slug: "framed-splendor",
+      line: "A premium LED mirror brand — website, identity and social, built from zero.",
+      image: "/images/work-cards/framed-splendor.png",
+      position: "50% 50%",
+      tone: "#0B1F3A",
+    },
+    {
+      slug: "autovive",
+      line: "A 360° brand for Sri Lanka’s first fully digital mobile car wash.",
+      image: "/images/work-cards/autovive.png",
+      position: "70% 55%",
+      tone: "#06111A",
+    },
+  ],
+};
 
-export const principlesTeaser = [
-  "Excellence",
-  "Integrity",
-  "Creativity with Purpose",
-  "Innovation",
-  "Client Partnership",
-];
+export const disciplines = {
+  eyebrow: "Our approach",
+  title: ["Every discipline.", "One team."],
+  body: "Different skills, one creative direction. Nothing is subcontracted — every output shares the same DNA.",
+  // one real project image per service (same order as src/content/services.ts)
+  images: [
+    { src: "/work/jma-uk/hero.png", credit: "JMA UK", position: "30% 50%" },
+    { src: "/work/shajara-tea/case/pack-lid.jpg", credit: "Shajara Tea", position: "50% 50%" },
+    { src: "/work/shajara-tea/case/photo-pouch.jpg", credit: "Shajara Tea", position: "50% 55%" },
+    { src: "/images/services/event-management.png", credit: "", position: "50% 50%" },
+  ],
+};
 
-export const pricing = {
-  eyebrow: "Pricing",
-  title: "Priced around your project.",
-  body: "Every business is different. We don't publish fixed packages because we don't do off-the-shelf work. Tell us what you need and we'll give you a clear, honest quote — no obligation, no pitch deck.",
-  cta: { label: "Get a Quote →", href: "/contact" },
+export const processIntro = {
+  eyebrow: "Our process",
+  title: ["You’ll always know", "where your project stands."],
+  body: "Clear milestones, honest updates and one point of contact — from the first call to launch, and after.",
+};
+
+export const philosophy = {
+  eyebrow: "The SKAYL philosophy",
+  title: ["Not your", "vendor."],
+  punch: "Your team.",
+};
+
+export const proof = {
+  eyebrow: "Proof",
+  title: "The work speaks first.",
+  // Shown when public/work/jma-uk/testimonial.mp4 exists.
+  video: {
+    src: "/work/jma-uk/testimonial.mp4",
+    poster: "/work/jma-uk/testimonial-poster.jpg",
+    captions: "/work/jma-uk/testimonial.vtt",
+    credit: "Secretary",
+    organisation: "Jaffna Muslim Association UK",
+  },
+  feature: {
+    statement: "Built at no cost to JMA.",
+    note: "Because some causes are worth more than any invoice.",
+    image: "/work/jma-uk/hero.png",
+    href: "/works/jma-uk",
+  },
+  facts: [
+    { value: "04", label: "Brands built" },
+    { value: "100%", label: "In-house delivery" },
+    { value: "02", label: "Countries — UK & Sri Lanka" },
+  ],
+};
+
+export const standard = {
+  eyebrow: "The SKAYL standard",
+  title: ["Every project", "runs on the", "same principles."],
+};
+
+export const homeCta = {
+  eyebrow: "Let’s talk",
+  title: ["Have something", "in mind?"],
+  body: "An idea, a brand that needs direction, or a platform that needs building — tell us what you need and you’ll get a clear, honest quote. No obligation, no pitch deck.",
+  email: "hello@skayl.digital",
 };
 
 export const faqs = [
@@ -92,7 +178,7 @@ export const faqs = [
   },
   {
     q: "What if I don't like the design?",
-    a: "Then we go again. We present concepts with clear reasoning, take feedback seriously, and iterate until it's right. We've never delivered a project a client wasn't happy with.",
+    a: "Then we go again. We present concepts with clear reasoning, take feedback seriously, and iterate until it's right.",
   },
   {
     q: "Are there any refunds?",

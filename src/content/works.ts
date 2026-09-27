@@ -1,4 +1,4 @@
-// Portfolio projects shown on the Works listing and cards, plus Zero Excuses reels.
+// Portfolio projects shown on the Works listing and cards.
 
 export type Work = {
   slug: string;
@@ -23,7 +23,7 @@ export const works: Work[] = [
   {
     slug: "jma-uk",
     title: "JMA UK",
-    page: "01 / 05",
+    page: "01 / 04",
     year: "2025–2026",
     role: "Lead Developer & Designer",
     services: [
@@ -48,7 +48,7 @@ export const works: Work[] = [
   {
     slug: "framed-splendor",
     title: "Framed Splendor",
-    page: "02 / 05",
+    page: "02 / 04",
     year: "2024–2025",
     role: "Lead Developer & Designer",
     services: [
@@ -64,31 +64,9 @@ export const works: Work[] = [
     tint: "#0B1F3A",
   },
   {
-    slug: "zero-excuses",
-    title: "Zero Excuses",
-    page: "03 / 05",
-    year: "2024",
-    role: "Content & Social",
-    services: ["Social Content", "Videography", "Reels", "Brand Design"],
-    description:
-      "High-energy gym content built to convert — reels, brand design, and social that actually moves people.",
-    cover: "/work/zero-excuses/hero.jpg",
-    cardBg: "/images/work-cards/zero-excuses.png",
-    category: "Fitness / Social Content",
-    subtitle: "Content built to stop the scroll",
-    cardLede: [
-      "High-energy content, built to convert.",
-      "Reels, brand design, and social that actually move people — not just look good.",
-    ],
-    heroVideo: "/work/zero-excuses/hero.mp4",
-    heroPoster: "/work/zero-excuses/hero.jpg",
-    glow: "#5C1D0B",
-    tint: "#14100E",
-  },
-  {
     slug: "autovive",
     title: "AutoVive",
-    page: "04 / 05",
+    page: "03 / 04",
     year: "2023–2024",
     role: "Brand Designer & Creative Director",
     services: [
@@ -114,7 +92,7 @@ export const works: Work[] = [
   {
     slug: "shajara-tea",
     title: "Shajara Tea",
-    page: "05 / 05",
+    page: "04 / 04",
     year: "2023–2024",
     role: "Brand Designer & Creative Director",
     services: [
@@ -128,19 +106,7 @@ export const works: Work[] = [
     description:
       "Complete branding kit for a premium Ceylon tea brand targeting the Middle East — from packaging to reels, all in one visual language.",
     cover: "/work/shajara-tea/posts/1.jpg",
-    cardBg: "/images/work-cards/shajara-tea.png",
     glow: "#3A6B2A",
     tint: "#070F07",
   },
-];
-
-export type Reel = { id: string; src: string; poster: string };
-
-export const reels: Reel[] = [
-  { id: "r1", src: "/work/zero-excuses/reel-1.mp4", poster: "/work/zero-excuses/reel-1.jpg" },
-  { id: "r2", src: "/work/zero-excuses/reel-2.mp4", poster: "/work/zero-excuses/reel-2.jpg" },
-  { id: "r3", src: "/work/zero-excuses/reel-3.mp4", poster: "/work/zero-excuses/reel-3.jpg" },
-  { id: "r4", src: "/work/zero-excuses/reel-4.mp4", poster: "/work/zero-excuses/reel-4.jpg" },
-  { id: "r5", src: "/work/zero-excuses/reel-5.mp4", poster: "/work/zero-excuses/reel-5.jpg" },
-  { id: "r6", src: "/work/zero-excuses/reel-6.mp4", poster: "/work/zero-excuses/reel-6.jpg" },
 ];

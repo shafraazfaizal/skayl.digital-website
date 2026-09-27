@@ -1,0 +1,52 @@
+/* About-page-only styles. Imported by the About page, so nothing here reaches
+   the rest of the site. */
+
+/* Hero wall: each column holds its list twice; moving it by exactly half
+   its height loops without a seam. One column falls, the other rises. */
+@keyframes about-wall-down {
+  from {
+    transform: translate3d(0, -50%, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes about-wall-up {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(0, -50%, 0);
+  }
+}
+
+.about-wall-track {
+  will-change: transform;
+}
+.about-wall-down {
+  animation: about-wall-down 70s linear infinite;
+}
+.about-wall-up {
+  animation: about-wall-up 82s linear infinite;
+}
+
+/* soft fade at the top and bottom edges */
+.about-wall {
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0, black 12%, black 82%, transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0, black 12%, black 82%, transparent 100%);
+}
+
+/* hovering the wall slows it to a stop so a piece can be looked at */
+@media (hover: hover) {
+  .about-wall:hover .about-wall-track {
+    animation-play-state: paused;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-wall-down,
+  .about-wall-up {
+    animation: none;
+  }
+}

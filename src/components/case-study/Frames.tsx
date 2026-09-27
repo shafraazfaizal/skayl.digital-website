@@ -53,7 +53,7 @@ export function BrowserFrame({
   );
 }
 
-/** Phone silhouette matching the site's reel PhoneFrame styling. */
+/** Phone silhouette for portrait screenshots. */
 export function PhoneMock({ children, className = "" }: { children: ReactNode; className?: string }) {
   return (
     <div

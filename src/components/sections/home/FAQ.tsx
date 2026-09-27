@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Container from "@/components/ui/Container";
-import SectionHeading from "@/components/ui/SectionHeading";
 import { faqs } from "@/content/home";
 
 function Caret({ open }: { open: boolean }) {
@@ -54,14 +53,17 @@ export default function FAQ() {
   return (
     <section className="py-24 md:py-28">
       <Container>
-        <div className="mx-auto mb-14 flex max-w-2xl flex-col items-center gap-3 text-center">
-          <SectionHeading
-            eyebrow="FAQs"
-            title="Your Questions, Answered"
-            size="standard"
-          />
-          <p className="text-muted">
-            Helping you understand our process and how SKAYL works.
+        <div className="mb-12 grid gap-8 md:mb-16 md:grid-cols-[1.2fr_0.8fr] md:items-end md:gap-16">
+          <div className="flex flex-col gap-6">
+            <span data-cs="fade" className="text-[11px] uppercase tracking-[0.28em] text-muted md:text-xs">
+              FAQs
+            </span>
+            <h2 data-cs="lines" className="display text-5xl leading-[0.95] md:text-7xl">
+              Your questions, answered.
+            </h2>
+          </div>
+          <p data-cs="fade" className="max-w-sm text-[17px] leading-relaxed text-muted">
+            How we work, what it costs, and what happens if something isn’t right.
           </p>
         </div>
 
