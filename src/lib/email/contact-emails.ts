@@ -110,7 +110,7 @@ ${steps
 <p style="margin:0 0 4px 0;font-family:${FONT};font-size:10px;letter-spacing:2.4px;text-transform:uppercase;color:${C.muted};">What you sent us</p>
 ${summaryRows(v, false)}
 ${book}
-<p style="margin:30px 0 0 0;font-family:${FONT};font-size:14px;line-height:22px;color:${C.ink};">Speak soon,<br><span style="color:${C.muted};">Shafraaz &amp; Shiham — SKAYL</span></p>`;
+<p style="margin:30px 0 0 0;font-family:${FONT};font-size:14px;line-height:22px;color:${C.ink};">Speak soon,<br><span style="color:${C.muted};">SKAYL</span></p>`;
 
   const text = [
     `Thanks, ${first}. We’ve got it from here.`,
@@ -128,7 +128,7 @@ ${book}
     "",
     contact.calendlyUrl ? `Book a call: ${contact.calendlyUrl}\n` : "",
     "Speak soon,",
-    "Shafraaz & Shiham — SKAYL",
+    "SKAYL",
     "",
     contact.email,
     ...contact.phones.map((p) => `${p.label}: ${p.display}`),

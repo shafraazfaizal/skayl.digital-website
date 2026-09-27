@@ -36,7 +36,7 @@ export const footer = {
       heading: "Legals",
       links: [
         { label: "Privacy Policy", href: "/privacy-policy" },
-        { label: "Term of Service", href: "/terms-and-conditions" },
+        { label: "Terms of Service", href: "/terms-and-conditions" },
       ],
     },
   ],
