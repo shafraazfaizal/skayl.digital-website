@@ -2,39 +2,62 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { nav } from "@/content/navigation";
 import Wordmark from "@/components/ui/Wordmark";
 
 export default function Nav() {
   const [open, setOpen] = useState(false);
+  const reduceMotion = useReducedMotion();
 
   return (
     <header className="relative z-40 w-full">
-      {/* Centred availability tab at the very top of the page — notched
-          banner shape with concave shoulders, matching the reference. */}
+      {/* Availability tab: hangs from the top edge of the screen like a
+          notch — smooth concave shoulders, soft rounded base. It drops in on
+          load, and on hover the line rolls over to an invitation. */}
       <div className="flex justify-center">
-        <div className="relative">
-          <svg
-            width="300"
-            height="48"
-            viewBox="0 0 300 48"
-            fill="none"
-            className="block h-auto max-w-[94vw]"
-            aria-hidden
-          >
+        <motion.div
+          initial={reduceMotion ? false : { y: "-100%" }}
+          animate={{ y: 0 }}
+          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
+          className="relative"
+        >
+          <svg width="320" height="42" viewBox="0 0 320 42" fill="none" className="block h-auto w-[300px] max-w-[92vw] md:w-[320px]" aria-hidden>
+            <defs>
+              <linearGradient id="skayl-tab" x1="0" y1="0" x2="0" y2="42" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stopColor="#0F0505" />
+                <stop offset="1" stopColor="#241817" />
+              </linearGradient>
+            </defs>
             <path
-              d="M0.00,0.00 L300.00,0.00 L272.73,2.44 L267.61,4.89 L264.20,7.33 L261.65,9.78 L259.09,12.22 L258.24,14.67 L256.53,17.11 L255.68,19.56 L253.98,22.00 L253.12,24.44 L252.27,26.89 L250.57,29.33 L248.86,31.78 L247.16,34.22 L244.60,36.67 L241.19,39.11 L236.08,41.56 L223.30,44.00 L76.70,44.00 L63.92,41.56 L58.81,39.11 L55.40,36.67 L52.84,34.22 L51.14,31.78 L49.43,29.33 L47.73,26.89 L46.88,24.44 L46.02,22.00 L44.32,19.56 L43.47,17.11 L41.76,14.67 L40.91,12.22 L38.35,9.78 L35.80,7.33 L32.39,4.89 L27.27,2.44 Z"
-              fill="#343434"
+              d="M0 0H320C305 0 297 5 295 17V22C295 33 288 41 276 41H44C32 41 25 33 25 22V17C23 5 15 0 0 0Z"
+              fill="url(#skayl-tab)"
             />
+            {/* a hairline of light along the base */}
+            <path d="M44 40.5H276" stroke="#F5F0E1" strokeOpacity="0.08" />
           </svg>
-          <div className="absolute inset-0 flex items-center justify-center">
-            <span className="flex items-center gap-2 whitespace-nowrap text-[12px] font-medium text-cream/90">
-              <span className="h-1.5 w-1.5 rounded-full bg-[#4ADE80]" />
-              Available for New Projects
+
+          <Link
+            href="/contact"
+            className="group absolute inset-x-[34px] inset-y-0 flex items-center justify-center rounded-b-[16px] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange"
+          >
+            <span className="relative block h-[18px] overflow-hidden">
+              <span className="flex flex-col transition-transform duration-500 ease-skayl-out group-hover:-translate-y-1/2 motion-reduce:transition-none">
+                <span className="flex h-[18px] items-center gap-2.5 whitespace-nowrap text-[11.5px] font-medium tracking-[0.02em] text-cream/90">
+                  <span aria-hidden className="relative flex h-1.5 w-1.5">
+                    <span className="absolute inset-0 rounded-full bg-[#4ADE80] opacity-70 motion-safe:animate-ping [animation-duration:2.4s]" />
+                    <span className="relative h-1.5 w-1.5 rounded-full bg-[#4ADE80] shadow-[0_0_8px_rgba(74,222,128,0.8)]" />
+                  </span>
+                  Available for new projects
+                </span>
+                <span aria-hidden className="flex h-[18px] items-center justify-center gap-2 whitespace-nowrap text-[11.5px] font-medium tracking-[0.02em] text-cream">
+                  Let’s talk
+                  <span className="text-orange">→</span>
+                </span>
+              </span>
             </span>
-          </div>
-        </div>
+          </Link>
+        </motion.div>
       </div>
 
       {/* Nav row */}
