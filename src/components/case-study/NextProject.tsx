@@ -6,6 +6,15 @@ import type { Work } from "@/content/works";
 export default function NextProject({ work, image }: { work: Work; image: string | null }) {
   return (
     <section className="px-5 pb-6 pt-6 md:px-12">
+      <div className="mb-5 flex items-center justify-between gap-6 px-1 text-[11px] uppercase tracking-[0.24em] text-muted md:mb-6 md:text-xs">
+        <Link href="/works" className="group inline-flex items-center gap-2 py-2 transition-colors hover:text-ink">
+          <span aria-hidden className="transition-transform duration-500 ease-skayl-out group-hover:-translate-x-1">
+            ←
+          </span>
+          Back to all work
+        </Link>
+        <span className="hidden sm:inline">Up next</span>
+      </div>
       <Link
         href={`/works/${work.slug}`}
         data-cursor

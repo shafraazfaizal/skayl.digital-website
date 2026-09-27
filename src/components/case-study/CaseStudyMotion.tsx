@@ -47,7 +47,7 @@ export default function CaseStudyMotion({ children }: { children: ReactNode }) {
         const trigger = (el: Element) =>
           el.hasAttribute("data-cs-load")
             ? undefined
-            : { trigger: el, start: "top 88%", once: true };
+            : { trigger: el, start: "top 88%", toggleActions: "play none none none" };
         const delay = (el: Element) =>
           parseFloat(el.getAttribute("data-cs-delay") || "0") +
           (el.hasAttribute("data-cs-load") ? 0.15 : 0);
@@ -203,10 +203,26 @@ export default function CaseStudyMotion({ children }: { children: ReactNode }) {
         return () => root.current?.classList.remove("cs-mobile-fx");
       });
 
-      // Web fonts change line lengths — re-measure once they're in.
-      document.fonts?.ready.then(() => ScrollTrigger.refresh()).catch(() => {});
+      // Web fonts change line lengths — re-measure once they're in. Wait two
+      // frames first: after a client-side page change the fonts are already
+      // loaded, and refreshing in the same tick the new triggers were created
+      // (before GSAP has initialised them) sends ScrollTrigger into a
+      // recursive refresh that crashes ("reading 'end'" / call stack).
+      let alive = true;
+      let raf = 0;
+      document.fonts?.ready
+        .then(() => {
+          raf = requestAnimationFrame(() => {
+            raf = requestAnimationFrame(() => alive && ScrollTrigger.refresh());
+          });
+        })
+        .catch(() => {});
 
-      return () => mm.revert();
+      return () => {
+        alive = false;
+        cancelAnimationFrame(raf);
+        mm.revert();
+      };
     },
     { scope: root }
   );

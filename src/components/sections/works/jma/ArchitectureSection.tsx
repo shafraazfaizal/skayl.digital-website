@@ -26,7 +26,7 @@ export default function ArchitectureSection() {
           gsap.set(p, { strokeDasharray: len, strokeDashoffset: len });
         });
         const tl = gsap.timeline({
-          scrollTrigger: { trigger: "[data-tree]", start: "top 75%", once: true },
+          scrollTrigger: { trigger: "[data-tree]", start: "top 75%", toggleActions: "play none none none" },
         });
         tl.from("[data-root]", { y: 20, opacity: 0, duration: 0.6, ease: "power3.out" })
           .to(paths, { strokeDashoffset: 0, duration: 1, ease: "power2.inOut" }, "-=0.2")

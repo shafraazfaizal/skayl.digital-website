@@ -41,7 +41,7 @@ export default function TechnologySection() {
           gsap.set(p, { strokeDasharray: len, strokeDashoffset: len });
         });
         gsap
-          .timeline({ scrollTrigger: { trigger: "[data-diagram]", start: "top 72%", once: true } })
+          .timeline({ scrollTrigger: { trigger: "[data-diagram]", start: "top 72%", toggleActions: "play none none none" } })
           .from("[data-node]", { opacity: 0, scale: 0.9, transformOrigin: "50% 50%", duration: 0.6, stagger: 0.08, ease: "power3.out" })
           .to(paths, { strokeDashoffset: 0, duration: 1.1, stagger: 0.12, ease: "power2.inOut" }, "-=0.3")
           .from("[data-host]", { opacity: 0, duration: 0.8 }, "-=0.6");

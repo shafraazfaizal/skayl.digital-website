@@ -10,6 +10,7 @@ import { caseStudies } from "@/content/case-studies";
 import JmaCaseStudy from "@/components/sections/works/jma/JmaCaseStudy";
 import ShajaraCaseStudy from "@/components/sections/works/shajara/ShajaraCaseStudy";
 import FramedCaseStudy from "@/components/sections/works/framed/FramedCaseStudy";
+import AutoViveCaseStudy from "@/components/sections/works/autovive/AutoViveCaseStudy";
 
 export function generateStaticParams() {
   return works.map((w) => ({ slug: w.slug }));
@@ -47,6 +48,11 @@ export default async function WorkDetailPage({
   if (slug === "framed-splendor") {
     const next = works.find((w) => w.slug === "autovive") ?? works[0];
     return <FramedCaseStudy work={work} next={next} />;
+  }
+
+  if (slug === "autovive") {
+    const next = works[(works.indexOf(work) + 1) % works.length];
+    return <AutoViveCaseStudy work={work} next={next} />;
   }
 
   if (slug === "shajara-tea") {

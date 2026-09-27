@@ -47,9 +47,20 @@ function Item({ q, a, defaultOpen }: { q: string; a: string; defaultOpen?: boole
   );
 }
 
-export default function FAQ() {
-  const left = faqs.slice(0, 4);
-  const right = faqs.slice(4);
+// Reusable: the homepage uses the defaults; other pages pass their own
+// questions and copy.
+export default function FAQ({
+  items = faqs,
+  title = "Your questions, answered.",
+  body = "How we work, what it costs, and what happens if something isn’t right.",
+}: {
+  items?: { q: string; a: string }[];
+  title?: string;
+  body?: string;
+} = {}) {
+  const half = Math.ceil(items.length / 2);
+  const left = items.slice(0, half);
+  const right = items.slice(half);
   return (
     <section className="py-24 md:py-28">
       <Container>
@@ -59,11 +70,11 @@ export default function FAQ() {
               FAQs
             </span>
             <h2 data-cs="lines" className="display text-5xl leading-[0.95] md:text-7xl">
-              Your questions, answered.
+              {title}
             </h2>
           </div>
           <p data-cs="fade" className="max-w-sm text-[17px] leading-relaxed text-muted">
-            How we work, what it costs, and what happens if something isn’t right.
+            {body}
           </p>
         </div>
 
