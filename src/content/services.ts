@@ -67,7 +67,7 @@ export const services: Service[] = [
 export const servicesHero = {
   eyebrow: "Services",
   title: ["Every discipline.", "One team."],
-  body: "Brand, web and content — designed, built and produced by us. Nothing is subcontracted, so everything we make speaks the same language.",
+  body: "Brand, web and content — led by one team, with one point of contact. You work directly with us, so everything we make speaks the same language.",
   // The hero's rotating stage: one real piece of work per discipline.
   stage: [
     { id: "web-development", discipline: "Web Development", project: "JMA UK", src: "/work/jma-uk/hero.png", w: 1122, h: 1402, position: "50% 40%" },
@@ -80,7 +80,7 @@ export const servicesHero = {
 export const servicesIntro = {
   statement: "One team, from the first idea to launch day — and after it.",
   facts: [
-    { label: "In-house", value: "Design, development and content — nothing outsourced." },
+    { label: "Direct", value: "One team and one point of contact, from brief to launch." },
     { label: "Quote-only", value: "Every project is priced to its scope, after a short call." },
     { label: "UK & Sri Lanka", value: "Working across both markets, and beyond." },
   ],
@@ -162,7 +162,7 @@ export const commitments = {
   items: [
     { title: "A clear quote before anything starts", body: "Scope, timeline and cost agreed upfront. No hidden extras, no invoice you didn’t see coming." },
     { title: "Honest from the first call", body: "If we’re not the right fit, we’ll tell you before you pay a deposit — not after." },
-    { title: "The people you meet do the work", body: "No account managers, no outsourcing. You talk directly to the two of us building it." },
+    { title: "You deal directly with us", body: "No account managers, no middlemen. You talk directly to the two of us leading your project." },
     { title: "We finish what we start", body: "Every project is seen through to launch, handed over properly, and supported after it." },
     { title: "Revisions until it’s right", body: "We don’t cap revisions artificially. Most projects land in two or three rounds." },
     { title: "You’ll never chase us", body: "Every enquiry gets a reply within 24 hours, and you’ll know where your project stands at every stage." },
@@ -175,8 +175,8 @@ export const servicesFaqs = [
     a: "Because no two projects are the same. A price list would either overcharge you or leave things out. After a short, no-obligation call we send a clear quote for exactly what you need — scope, timeline and cost, upfront.",
   },
   {
-    q: "Do you outsource any of the work?",
-    a: "No. Design, development and content are all done by us. You talk to the people doing the work, from the first call to launch.",
+    q: "Who will I actually be working with?",
+    a: "Us — directly. You talk to the two founders leading your project, from the first call to launch. One line of communication, and we’re accountable for everything that’s delivered.",
   },
   {
     q: "Can I hire you for just one service?",

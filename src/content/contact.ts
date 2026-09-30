@@ -9,7 +9,7 @@ export const contact = {
   availability: "Currently taking on select projects",
   replyTime: "We reply within 24 hours.",
   // Paste the Calendly link here — the "Book a call" option appears automatically.
-  calendlyUrl: "",
+  calendlyUrl: "https://calendly.com/skaylhq/30min",
   phones: [
     { region: "UK", label: "UK enquiries", display: "+44 7760 636396", tel: "+447760636396" },
     { region: "LK", label: "Sri Lanka enquiries", display: "+94 71 877 3300", tel: "+94718773300" },

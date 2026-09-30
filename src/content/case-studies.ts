@@ -16,7 +16,6 @@ export type CaseStudy = {
   problems?: string[];
   builtHeading: string;
   built: { no: string; title: string; body: string }[];
-  quote: { text: string; author: string };
   outcomesHeading: string;
   outcomes: string[];
   stack: { area: string; detail: string }[];
@@ -28,7 +27,7 @@ export const caseStudies: Record<string, CaseStudy> = {
     client: "Jaffna Muslim Association UK",
     sector: "Charity / Non-Profit",
     deliveredBy: "SKAYL",
-    year: "2025 – 2026",
+    year: "2026",
     headline:
       "Digital transformation for a UK charity serving the Jaffna Muslim community.",
     colours: {
@@ -88,10 +87,6 @@ export const caseStudies: Record<string, CaseStudy> = {
         body: "Full editorial history page covering seven eras of Jaffna Muslim heritage — from 7th century Arab trade origins to JMA's work today. All content researched, written, and delivered to JMA's secretary for community review before publication.",
       },
     ],
-    quote: {
-      text: "It's professional — it actually works for our community. Our team can publish campaigns and news without any technical knowledge, and it reflects our Islamic values. Alhamdulillah, we're very pleased with what has been delivered.",
-      author: "Secretary, Jaffna Muslim Association UK",
-    },
     outcomesHeading: "What changed for JMA.",
     outcomes: [
       "Online donations enabled — JMA can now accept donations 24/7 from anywhere in the world.",
@@ -116,7 +111,7 @@ export const caseStudies: Record<string, CaseStudy> = {
     client: "AutoVive",
     sector: "Automotive · Car Wash Startup · Sri Lanka",
     deliveredBy: "SKAYL",
-    year: "2023 – 2024",
+    year: "2025",
     headline:
       "A world-class brand for Sri Lanka's first fully digital mobile car wash.",
     colours: {
@@ -163,10 +158,6 @@ export const caseStudies: Record<string, CaseStudy> = {
         body: "A full investor pitch deck covering Why Now, Problem, Solution, Business Model, Market Size, Traction & Roadmap — designed to raise expansion capital and communicate the AutoVive vision clearly to investors.",
       },
     ],
-    quote: {
-      text: "The brand they built made AutoVive look like it had been operating for years. Every asset — from the uniforms to the pitch deck — told the same story. That consistency is what made investors take us seriously.",
-      author: "Founder, AutoVive",
-    },
     outcomesHeading: "What AutoVive walked away with.",
     outcomes: [
       "Complete brand identity delivered — logo, colour system, and visual language fully documented and ready to scale.",

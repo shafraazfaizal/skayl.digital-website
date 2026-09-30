@@ -44,7 +44,7 @@ export const av = {
     title: "AutoVive",
     statement: ["A premium identity for", "a next-generation", "mobile car wash."],
     disciplines: ["Branding", "Strategy", "Creative Direction"],
-    years: "2023 — 2024",
+    years: "2025",
     tagline: "Tap. Shine. Drive.",
   },
 
@@ -53,7 +53,7 @@ export const av = {
       { label: "Client", value: ["AutoVive"] },
       { label: "Industry", value: ["Automotive / Mobile car care"] },
       { label: "Role", value: ["Brand Designer & Creative Director"] },
-      { label: "Year", value: ["2023–2024"] },
+      { label: "Year", value: ["2025"] },
       { label: "Services", value: ["Logo & visual identity", "Brand guidelines", "Uniforms & workwear", "Social media", "Investor pitch deck"] },
     ],
     statement: "Sri Lanka’s first fully digital mobile car wash — branded like the premium service it is.",

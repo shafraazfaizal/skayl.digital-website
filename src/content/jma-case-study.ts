@@ -54,14 +54,14 @@ export const jma = {
     client: "Jaffna Muslim Association UK",
     statement: "Building a digital foundation for a community.",
     disciplines: ["Brand", "Digital", "Development"],
-    years: "2025 — 2026",
+    years: "2026",
   },
 
   meta: [
     { label: "Client", value: ["Jaffna Muslim Association UK"] },
     { label: "Industry", value: ["Charity / Non-profit"] },
     { label: "Role", value: ["Lead Developer & Designer"] },
-    { label: "Year", value: ["2025–2026"] },
+    { label: "Year", value: ["2026"] },
     {
       label: "Services",
       value: [

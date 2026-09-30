@@ -214,7 +214,7 @@ export const terms: LegalDoc = {
       blocks: [
         {
           type: "p",
-          text: "Our Studio Notes and other content are shared for general information. They aren’t professional, legal or financial advice. Where an article discusses Islamic principles, it explains why we work the way we do; for religious rulings, please refer to qualified scholars.",
+          text: "Our Studio Notes and other content are shared for general information. They aren’t professional, legal or financial advice.",
         },
       ],
     },

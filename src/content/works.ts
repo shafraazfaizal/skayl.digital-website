@@ -33,7 +33,7 @@ export const works: Work[] = [
     slug: "jma-uk",
     title: "JMA UK",
     page: "01 / 04",
-    year: "2025–2026",
+    year: "2026",
     role: "Lead Developer & Designer",
     services: [
       "Website Design",
@@ -63,7 +63,7 @@ export const works: Work[] = [
     slug: "framed-splendor",
     title: "Framed Splendor",
     page: "02 / 04",
-    year: "2024–2025",
+    year: "2026",
     role: "Lead Developer & Designer",
     services: [
       "E-commerce Development",
@@ -87,7 +87,7 @@ export const works: Work[] = [
     slug: "autovive",
     title: "AutoVive",
     page: "03 / 04",
-    year: "2023–2024",
+    year: "2025",
     role: "Brand Designer & Creative Director",
     services: [
       "Logo Design",
@@ -118,7 +118,7 @@ export const works: Work[] = [
     slug: "shajara-tea",
     title: "Shajara Tea",
     page: "04 / 04",
-    year: "2023–2024",
+    year: "2025",
     role: "Brand Designer & Creative Director",
     services: [
       "Logo Design",

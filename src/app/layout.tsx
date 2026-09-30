@@ -24,12 +24,27 @@ const calSans = localFont({
   display: "swap",
 });
 
+const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://www.skayl.digital").replace(/\/$/, "");
+const siteDescription =
+  "SKAYL is a UK & Sri Lanka creative studio building websites, brands, and content for charities, startups, and growing businesses — built around what you actually need.";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: "SKAYL — We build what your brand deserves.",
-  description:
-    "SKAYL is a UK & Sri Lanka creative studio building websites, brands, and content for charities, startups, and growing businesses — entirely in-house, every time.",
-  icons: {
-    icon: "/favicon.ico",
+  description: siteDescription,
+  // The share image comes from src/app/opengraph-image.png (and twitter-image.png).
+  openGraph: {
+    type: "website",
+    siteName: "SKAYL",
+    locale: "en_GB",
+    url: "/",
+    title: "SKAYL — Your team. Not your agency.",
+    description: siteDescription,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "SKAYL — Your team. Not your agency.",
+    description: siteDescription,
   },
 };
 

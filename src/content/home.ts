@@ -9,7 +9,7 @@ export const processSteps = [
 ];
 
 export const whyUs = [
-  { title: "Fully in-house. Every time.", body: "Design, dev, and content built by us — not managed by us and built by someone else. When we say in-house, we mean it." },
+  { title: "Direct collaboration. Every time.", body: "You work directly with us — the people leading your project — not an account manager passing messages along. One line of communication, from the first call to launch." },
   { title: "One point of contact. One accountable team.", body: "You talk directly to the people doing the work. No account-manager layers, no lost context, no finger-pointing." },
   { title: "Built for your brand — not from a template.", body: "Every project is made to measure. We take time to understand your business before we open Figma or write a line of code." },
   { title: "Honest before we start — and after.", body: "If we're not the right fit, we'll tell you before we start — not after you've paid a deposit. Every project begins with a discovery call precisely for this reason." },
@@ -54,7 +54,7 @@ export const marquee = {
 export const selectedWork = {
   eyebrow: "Selected work",
   title: ["What", "we’ve", "built."],
-  body: "Brands, platforms and content — each one built from scratch, all of it in-house.",
+  body: "Brands, platforms and content — each one built from scratch, around what the client actually needed.",
   flagship: {
     slug: "jma-uk",
     label: "Flagship",
@@ -84,7 +84,7 @@ export const selectedWork = {
     {
       slug: "framed-splendor",
       line: "A premium LED mirror brand — website, identity and social, built from zero.",
-      image: "/images/work-cards/framed-splendor.png",
+      image: "/work/framed-splendor/hero.png",
       position: "50% 50%",
       tone: "#0B1F3A",
     },
@@ -101,7 +101,7 @@ export const selectedWork = {
 export const disciplines = {
   eyebrow: "Our approach",
   title: ["Every discipline.", "One team."],
-  body: "Different skills, one creative direction. Nothing is subcontracted — every output shares the same DNA.",
+  body: "Different skills, one creative direction. You deal directly with us, so every output shares the same DNA.",
   // one real project image per service (same order as src/content/services.ts)
   images: [
     { src: "/work/jma-uk/hero.png", credit: "JMA UK", position: "30% 50%" },
@@ -142,7 +142,7 @@ export const proof = {
   },
   facts: [
     { value: "04", label: "Brands built" },
-    { value: "100%", label: "In-house delivery" },
+    { value: "01", label: "Point of contact" },
     { value: "02", label: "Countries — UK & Sri Lanka" },
   ],
 };

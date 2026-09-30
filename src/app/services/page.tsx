@@ -15,7 +15,7 @@ import { serviceChapters, servicesFaqs, servicesHero } from "@/content/services"
 export const metadata: Metadata = {
   title: "Services — SKAYL",
   description:
-    "Web development, branding & design, and content & media — built in-house by one team, quoted to your scope. Event management available as an add-on.",
+    "Web development, branding & design, and content & media — led by one team, quoted to your scope. Event management available as an add-on.",
 };
 
 // Story: what we do → the promise → each discipline, shown through real work

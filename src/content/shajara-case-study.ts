@@ -20,7 +20,7 @@ export const shAssets = {
   // Packaging photography
   packLid: `${C}/pack-lid.jpg`,
   packJourney: `${C}/pack-journey.jpg`,
-  packHighlands: `${C}/pack-highlands.png`,
+  packHighlands: `${C}/pack-highlands.jpg`,
   packStack: `${C}/pack-stack.jpg`,
   // Packaging details (crops of the photography)
   detailMark: `${C}/detail-mark.jpg`,
@@ -72,14 +72,14 @@ export const sh = {
     title: "Shajara Tea",
     statement: "Bringing the richness of Sri Lankan tea to a new market.",
     disciplines: ["Brand", "Packaging", "Content"],
-    years: "2023 — 2024",
+    years: "2025",
   },
 
   meta: [
     { label: "Client", value: ["Shajara Tea"] },
     { label: "Industry", value: ["F&B / Premium Ceylon Tea"] },
     { label: "Role", value: ["Brand Designer & Creative Director"] },
-    { label: "Year", value: ["2023–2024"] },
+    { label: "Year", value: ["2025"] },
     { label: "Services", value: ["Brand Identity", "Packaging", "Art Direction", "Social Media", "Content Creation"] },
   ],
 

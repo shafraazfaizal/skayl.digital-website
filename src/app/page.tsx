@@ -2,6 +2,7 @@ import CaseStudyMotion from "@/components/case-study/CaseStudyMotion";
 import HomeHero from "@/components/sections/home/HomeHero";
 import ServicesMarquee from "@/components/sections/home/ServicesMarquee";
 import HomeWork from "@/components/sections/home/HomeWork";
+import HomeFilm from "@/components/sections/home/HomeFilm";
 import Disciplines from "@/components/sections/home/Disciplines";
 import HomeProcess from "@/components/sections/home/HomeProcess";
 import Philosophy from "@/components/sections/home/Philosophy";
@@ -11,7 +12,7 @@ import FAQ from "@/components/sections/home/FAQ";
 import HomeCTA from "@/components/sections/home/HomeCTA";
 import "@/components/sections/home/home.css";
 
-// Story: who we are → what we do → what we've built → how we think → how we
+// Story: who we are → what we do → the film → what we've built → how we think → how we
 // work → why → proof → standard → questions → let's talk.
 // Rhythm: cream → DARK → cream → cream → DARK (process + philosophy as one
 // event) → cream … ending on cream so the footer lands on its own.
@@ -21,6 +22,7 @@ export default function Home() {
       <div className="flex flex-col gap-5 md:gap-6">
         <HomeHero />
         <ServicesMarquee />
+        <HomeFilm />
         <HomeWork />
         <Disciplines />
         <section className="px-5 md:px-12">

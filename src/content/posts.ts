@@ -18,7 +18,7 @@ export type Block =
       reference: string;
     };
 
-export type PostCategory = "Case notes" | "Process" | "Branding" | "Creative principle" | "Studio";
+export type PostCategory = "Case notes" | "Process" | "Branding" | "Studio";
 
 export type Post = {
   slug: string;
@@ -68,85 +68,6 @@ export const posts: Post[] = [
       {
         type: "p",
         text: "We built JMA’s digital home at no cost. Some causes are worth more than any invoice — and building for a community that trusts you is its own kind of brief.",
-      },
-    ],
-  },
-  {
-    slug: "why-we-produce-content-without-music",
-    title: "Why we produce content without music",
-    excerpt:
-      "It’s a principle, not a style choice. Here’s where it comes from — the Qur’an and the Sunnah — and why it makes the work better, not smaller.",
-    category: "Creative principle",
-    year: "2026",
-    related: { label: "See our content work", href: "/services#content-media" },
-    blocks: [
-      {
-        type: "p",
-        text: "When most people make a reel, the first thing they reach for is a track. Music sets the mood, fills the silence and quietly does a lot of the emotional work. At SKAYL we don’t use it — not in reels, brand films or social cuts, for any client, on any project.",
-      },
-      {
-        type: "p",
-        text: "People sometimes assume that’s a limitation we tolerate. It isn’t. It’s a conviction, and we want to be open about where it comes from.",
-      },
-      { type: "h2", text: "Where the principle comes from" },
-      {
-        type: "p",
-        text: "In Surah Luqman, Allah describes people who take up ‘idle talk’ to lead others away from His path:",
-      },
-      {
-        type: "source",
-        kind: "Qur’an",
-        arabic: "وَمِنَ النَّاسِ مَن يَشْتَرِي لَهْوَ الْحَدِيثِ لِيُضِلَّ عَن سَبِيلِ اللَّهِ بِغَيْرِ عِلْمٍ وَيَتَّخِذَهَا هُزُوًا ۚ أُولَٰئِكَ لَهُمْ عَذَابٌ مُّهِينٌ",
-        translation:
-          "And of the people is he who buys the amusement of speech to mislead [others] from the way of Allah without knowledge and who takes it in ridicule. Those will have a humiliating punishment.",
-        reference: "Surah Luqman, 31:6",
-      },
-      {
-        type: "p",
-        text: "The Companion ʿAbdullah ibn Masʿud, one of the most learned of the Companions in the Qur’an, was asked what ‘the amusement of speech’ in this verse refers to:",
-      },
-      {
-        type: "source",
-        kind: "Tafsir",
-        translation: "“It is singing — by Allah, besides whom there is no god.” He said it three times.",
-        reference: "Reported by Ibn Jarir al-Tabari in his Tafsir of 31:6",
-      },
-      {
-        type: "p",
-        text: "And the Prophet ﷺ foretold a time when musical instruments would be treated as permissible alongside things that are clearly forbidden:",
-      },
-      {
-        type: "source",
-        kind: "Hadith",
-        arabic: "لَيَكُونَنَّ مِنْ أُمَّتِي أَقْوَامٌ يَسْتَحِلُّونَ الْحِرَ وَالْحَرِيرَ وَالْخَمْرَ وَالْمَعَازِفَ",
-        translation:
-          "“From among my followers there will be some people who will consider illegal sexual intercourse, the wearing of silk, the drinking of alcoholic drinks and the use of musical instruments as lawful.”",
-        reference: "Sahih al-Bukhari 5590 — narrated by Abu ʿAmir or Abu Malik al-Ashʿari",
-      },
-      {
-        type: "p",
-        text: "Musical instruments being impermissible is the position of the four major schools of Islamic law, with the well-known allowance of the daff on occasions such as weddings and Eid. We’re a creative studio, not scholars — anyone who wants to go deeper should learn from qualified people of knowledge. But this is why the principle isn’t negotiable for us, and why we hold it for every client, Muslim or not.",
-      },
-      { type: "h2", text: "What we use instead" },
-      {
-        type: "list",
-        items: [
-          "Voice — voiceover and scripts written to carry the story",
-          "Natural sound — the pour of tea, the rain, the room, the street",
-          "Vocal-only nasheeds, where a piece needs that feeling",
-          "Pacing, silence and edit rhythm — the cut does the work a beat would",
-          "Cinematic visuals that hold attention on their own",
-        ],
-      },
-      { type: "quote", text: "When you can’t lean on a trending track, every frame has to earn its place." },
-      { type: "h2", text: "Why it makes the work better" },
-      {
-        type: "p",
-        text: "Without a track to hide behind, content has to be genuinely good: a clear idea, a strong first second, deliberate pacing, real sound. It also doesn’t date the way a song people are tired of by next month does.",
-      },
-      {
-        type: "p",
-        text: "And for Muslim businesses, founders and creators, it removes a worry entirely. You never have to ask whether the content made for your brand sits right with your values. That’s the promise: we won’t, and we don’t.",
       },
     ],
   },
@@ -276,30 +197,30 @@ export const posts: Post[] = [
   },
   {
     slug: "in-house-from-first-call-to-launch",
-    title: "In-house, from the first call to launch",
-    excerpt: "Why we don’t outsource — and what it means for you to talk to the people actually doing the work.",
+    title: "Direct, from the first call to launch",
+    excerpt: "One team, one point of contact — and what it means for you to talk directly to the people responsible for your project.",
     category: "Studio",
     year: "2026",
     related: { label: "What we do", href: "/services" },
     blocks: [
       {
         type: "p",
-        text: "SKAYL is two founders: one who builds, one who creates. Brand, web and content come from the same small team, held to the same standard. Nothing is subcontracted.",
+        text: "SKAYL is two founders: one who builds, one who creates. Brand, web and content are led by the same small team and held to the same standard — and you deal directly with us, from the first call to launch day.",
       },
       { type: "h2", text: "Why it matters to you" },
       {
         type: "list",
         items: [
-          "You talk directly to the people doing the work — no account managers, no lost context",
-          "The brand, the website and the content are made by people who understand all three",
-          "When something needs changing, the person who made it changes it",
-          "Nobody can hand your project to someone you’ve never met",
+          "You talk directly to the people responsible for your project — no account managers, no lost context",
+          "The brand, the website and the content are directed by people who understand all three",
+          "One line of communication: when something needs changing, you tell us, and we own it",
+          "Your project never gets passed to someone you’ve never spoken to",
         ],
       },
-      { type: "quote", text: "When we say in-house, we mean it." },
+      { type: "quote", text: "Your team. Not your agency." },
       {
         type: "p",
-        text: "It’s also why we’re selective about what we take on. A small team that does everything itself can only do its best work on so many projects at once — so we’d rather do fewer, properly.",
+        text: "It’s also why we’re selective about what we take on. A small team that stays this close to every project can only do its best work on so many at once — so we’d rather do fewer, properly.",
       },
     ],
   },

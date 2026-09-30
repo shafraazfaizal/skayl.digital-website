@@ -151,22 +151,6 @@ export default function CaseStudy({
         </Container>
       </section>
 
-      {/* Quote */}
-      <section className="py-24">
-        <Container>
-          <Reveal>
-            <blockquote className="mx-auto flex max-w-3xl flex-col gap-8 text-center">
-              <p className="font-display text-2xl leading-snug tracking-tightest md:text-4xl">
-                “{data.quote.text}”
-              </p>
-              <cite className="not-italic text-sm text-[var(--accent)]">
-                — {data.quote.author}
-              </cite>
-            </blockquote>
-          </Reveal>
-        </Container>
-      </section>
-
       {/* Outcomes */}
       <section className="bg-[var(--bg)] py-24">
         <Container>

@@ -200,7 +200,7 @@ export default function WorksExhibition({ items, disciplines }: { items: Showcas
                 </span>
               </h1>
               <p data-cs="fade" data-cs-load data-cs-delay="0.4" className="max-w-lg text-[17px] leading-relaxed text-muted md:text-lg">
-                Every project is designed, developed and delivered entirely in-house — no outsourcing, no shortcuts.
+                Every project is led by us from the first call to launch — one team, one point of contact, no shortcuts.
               </p>
               <dl data-cs="stagger" data-cs-load data-cs-delay="0.55" className="mt-2 grid max-w-md grid-cols-3 border-t border-line">
                 {stats.map((s, i) => (

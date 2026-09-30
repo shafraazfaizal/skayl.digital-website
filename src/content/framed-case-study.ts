@@ -18,7 +18,7 @@ export const fsAssets = {
   interiorAntifog: `${C}/interior-antifog.jpg`,
   interiorTones: `${C}/interior-tones.jpg`,
   collection: `${C}/collection-mirrors.jpg`,
-  heroPhoto: `${C}/web-hero-photo.png`, // the website's own hero photograph
+  heroPhoto: `${C}/web-hero-photo.jpg`, // the website's own hero photograph
   // details
   detailGlow: `${C}/detail-glow.jpg`,
   detailAntifog: `${C}/detail-antifog.jpg`,
@@ -66,7 +66,7 @@ export const fs = {
     title: ["Framed", "Splendor"],
     statement: "Light, reframed.",
     disciplines: ["E-commerce", "Brand identity", "Digital"],
-    years: "2024 — 2025",
+    years: "2026",
     role: "Lead Developer & Designer",
   },
 
@@ -78,7 +78,7 @@ export const fs = {
       { label: "Client", value: ["Framed Splendor"] },
       { label: "Industry", value: ["E-commerce / Home & Bathroom"] },
       { label: "Role", value: ["Lead Developer & Designer"] },
-      { label: "Year", value: ["2024–2025"] },
+      { label: "Year", value: ["2026"] },
       { label: "Services", value: ["E-commerce Website", "Brand Identity", "Logo Design", "Social Media Design"] },
     ],
   },

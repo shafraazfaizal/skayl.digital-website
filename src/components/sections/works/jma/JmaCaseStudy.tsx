@@ -18,7 +18,6 @@ import ContentEngineSection from "./ContentEngineSection";
 import TechnologySection from "./TechnologySection";
 import MobileSection from "./MobileSection";
 import ImpactSection from "./ImpactSection";
-import TestimonialSection from "./TestimonialSection";
 import FinalStatement from "./FinalStatement";
 import FinalVisual from "./FinalVisual";
 
@@ -60,7 +59,6 @@ export default function JmaCaseStudy({ work, next }: { work: Work; next: Work })
           }}
         />
         <ImpactSection />
-        <TestimonialSection assets={assets} />
         <FinalStatement assets={assets} />
         <FinalVisual assets={assets} />
         <NextProject work={next} image={nextImage} />

@@ -130,8 +130,8 @@ export const founders = [
     bio: "Visual creative specialising in graphic design, videography and photography. Crafts brand identities, social content and reels built to the same standard as the brand they represent.",
     timeline: [
       { title: "Co-Founder & Creative Director — SKAYL", years: "2025–Now" },
-      { title: "Brand Designer — Shajara Tea", years: "2023–2024" },
-      { title: "Graphic Designer — AutoVive", years: "2023–2024" },
+      { title: "Brand Designer — Shajara Tea", years: "2025" },
+      { title: "Graphic Designer — AutoVive", years: "2025" },
     ],
   },
 ];

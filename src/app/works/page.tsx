@@ -8,7 +8,7 @@ import { works, type Work } from "@/content/works";
 
 export const metadata: Metadata = {
   title: "Works — SKAYL",
-  description: "Selected work from SKAYL — brand, web and content, designed, developed and delivered entirely in-house.",
+  description: "Selected work from SKAYL — brand, web and content, built around what each client actually needed.",
 };
 
 // Each project's hero visual on the Works page. Real assets only; anything
