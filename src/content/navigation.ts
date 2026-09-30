@@ -26,7 +26,7 @@ export const footer = {
       links: [
         {
           label: "Instagram",
-          href: "https://www.instagram.com/skayl.io/?utm_source=ig_web_button_share_sheet",
+          href: "https://www.instagram.com/skayldigital/?utm_source=ig_web_button_share_sheet",
           external: true,
         },
         { label: "LinkedIn", href: "https://linkedin.com", external: true },
