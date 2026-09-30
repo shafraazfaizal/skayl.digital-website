@@ -195,7 +195,7 @@ export default function WorksExhibition({ items, disciplines }: { items: Showcas
                 <span data-cs="lines" data-cs-load data-cs-delay="0.08" className="block md:whitespace-nowrap">
                   Built with intention.
                 </span>
-                <span data-cs="lines" data-cs-load data-cs-delay="0.16" className="block text-ink/30 md:whitespace-nowrap">
+                <span data-cs="lines" data-cs-load data-cs-delay="0.16" className="block text-ink/45 md:whitespace-nowrap">
                   Delivered with precision<span className="text-orange">.</span>
                 </span>
               </h1>

@@ -42,7 +42,7 @@ export default function FsEcommerce({ assets }: { assets: FsAssets }) {
             </span>
             <h2 className="display text-[3rem] leading-[0.92] sm:text-6xl md:text-7xl lg:text-8xl">
               {ecommerce.title.map((l, i) => (
-                <span key={l} data-cs="lines" data-cs-delay={String(i * 0.08)} className={`block ${i === ecommerce.title.length - 1 ? "text-ink/30" : ""}`}>
+                <span key={l} data-cs="lines" data-cs-delay={String(i * 0.08)} className={`block ${i === ecommerce.title.length - 1 ? "text-ink/45" : ""}`}>
                   {l}
                 </span>
               ))}

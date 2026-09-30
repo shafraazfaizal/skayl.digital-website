@@ -18,7 +18,7 @@ export default function AvIdentity({ assets }: { assets: AvAssets }) {
             </span>
             <h2 className="display text-[3.2rem] leading-[0.9] sm:text-7xl md:text-8xl">
               {identity.title.map((l, i) => (
-                <span key={l} data-cs="lines" data-cs-delay={String(i * 0.08)} className={i === 1 ? "block text-ink/30" : "block"}>
+                <span key={l} data-cs="lines" data-cs-delay={String(i * 0.08)} className={i === 1 ? "block text-ink/45" : "block"}>
                   {l}
                 </span>
               ))}
@@ -90,7 +90,7 @@ export default function AvIdentity({ assets }: { assets: AvAssets }) {
         <div data-cs-drift="8" className="mt-6 flex w-max items-center gap-10 whitespace-nowrap pl-[6vw] md:gap-14">
           {identity.voice.map((v, i) => (
             <span key={v} className="flex items-center gap-10 md:gap-14">
-              <span className={`display text-4xl md:text-6xl lg:text-7xl ${i % 2 ? "text-ink/30" : "text-ink"}`}>{v}</span>
+              <span className={`display text-4xl md:text-6xl lg:text-7xl ${i % 2 ? "text-ink/45" : "text-ink"}`}>{v}</span>
               <span aria-hidden className="h-2.5 w-2.5 rotate-45" style={{ backgroundColor: avColours.cyan }} />
             </span>
           ))}

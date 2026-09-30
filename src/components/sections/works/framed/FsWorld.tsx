@@ -22,7 +22,7 @@ export default function FsWorld({ assets }: { assets: FsAssets }) {
                   {l}
                 </span>
               ))}
-              <span data-cs="lines" data-cs-delay="0.2" className="block text-ink/30">
+              <span data-cs="lines" data-cs-delay="0.2" className="block text-ink/45">
                 {world.accent}
               </span>
             </h2>

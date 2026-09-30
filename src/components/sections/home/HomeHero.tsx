@@ -17,7 +17,7 @@ export default function HomeHero() {
               </span>
               <h1 className="display text-[13.4vw] leading-[0.88] sm:text-[11vw] md:text-[min(3.6rem,9.5svh)] lg:text-[min(4.5rem,10svh)] xl:text-[min(5.8rem,10svh)] 2xl:text-[min(7rem,10.5svh)]">
                 {homeHero.muted.map((l, i) => (
-                  <span key={l} data-cs="lines" data-cs-load data-cs-delay={String(0.1 + i * 0.08)} className="block whitespace-nowrap text-ink/30">
+                  <span key={l} data-cs="lines" data-cs-load data-cs-delay={String(0.1 + i * 0.08)} className="block whitespace-nowrap text-ink/45">
                     {l}
                   </span>
                 ))}

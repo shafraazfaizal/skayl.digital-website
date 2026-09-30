@@ -59,7 +59,7 @@ export default function AvDeck({ assets }: { assets: AvAssets }) {
             </span>
             <h2 className="display text-[2.7rem] leading-[0.95] sm:text-6xl md:text-6xl lg:text-7xl">
               {deck.title.map((l, i) => (
-                <span key={l} data-cs="lines" data-cs-delay={String(i * 0.08)} className={i ? "block text-ink/30" : "block"}>
+                <span key={l} data-cs="lines" data-cs-delay={String(i * 0.08)} className={i ? "block text-ink/45" : "block"}>
                   {l}
                 </span>
               ))}

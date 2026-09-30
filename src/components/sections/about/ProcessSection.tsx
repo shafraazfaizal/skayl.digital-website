@@ -96,7 +96,7 @@ export default function ProcessSection() {
                       )}
                     />
                     <div className="flex items-baseline gap-4">
-                      <span className={cn("font-display text-sm tabular-nums transition-colors duration-500", on ? "text-orange" : "text-ink/30")}>{s.no}</span>
+                      <span className={cn("font-display text-sm tabular-nums transition-colors duration-500", on ? "text-orange" : "text-ink/60")}>{s.no}</span>
                       <h3
                         className={cn(
                           "display origin-left text-4xl leading-none transition-[transform,opacity] duration-700 ease-skayl-out md:text-5xl lg:text-6xl [.cs-mobile-fx_&]:opacity-30 [.cs-mobile-fx_.cs-focus_&]:!opacity-100",

@@ -58,6 +58,9 @@ export default function CaseStudyMotion({ children }: { children: ReactNode }) {
             type: "lines",
             mask: "lines",
             linesClass: "cs-line",
+            // Lines keep whole words, so screen readers read the heading as-is —
+            // no aria-label on the (role-less) span, which Lighthouse flags.
+            aria: "none",
             autoSplit: true,
             onSplit: (self) =>
               gsap.from(self.lines, {

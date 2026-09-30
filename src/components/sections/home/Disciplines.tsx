@@ -93,7 +93,7 @@ export default function Disciplines() {
                   onBlur={() => setHover(null)}
                   className="group hidden grid-cols-[3rem_minmax(0,1fr)_minmax(0,15rem)_auto] items-center gap-8 py-9 focus-visible:outline-none md:grid"
                 >
-                  <span className={cn("font-display text-sm tabular-nums transition-colors duration-500", hover === i ? "text-orange" : "text-ink/35")}>
+                  <span className={cn("font-display text-sm tabular-nums transition-colors duration-500", hover === i ? "text-orange" : "text-ink/60")}>
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <span
@@ -126,7 +126,7 @@ export default function Disciplines() {
                   onTouchStart={() => setHover(i)}
                   className="relative grid grid-cols-[2rem_1fr] items-center gap-x-3 gap-y-2 py-7 md:hidden"
                 >
-                  <span className={cn("font-display text-sm tabular-nums transition-colors duration-500", hover === i ? "text-orange" : "text-ink/35")}>
+                  <span className={cn("font-display text-sm tabular-nums transition-colors duration-500", hover === i ? "text-orange" : "text-ink/60")}>
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <span

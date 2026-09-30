@@ -97,7 +97,7 @@ export default function HomeProcess() {
                 const current = !pinned || i === active;
                 return (
                   <li key={s.no} className="flex flex-col gap-3">
-                    <span className={cn("font-display text-sm tabular-nums transition-colors duration-500", on ? "text-orange" : "text-cream/30")}>{s.no}</span>
+                    <span className={cn("font-display text-sm tabular-nums transition-colors duration-500", on ? "text-orange" : "text-cream/55")}>{s.no}</span>
                     <h3
                       className={cn(
                         "display origin-left text-4xl leading-none transition-[transform,opacity] duration-700 ease-skayl-out lg:text-5xl xl:text-6xl",

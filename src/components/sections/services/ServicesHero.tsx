@@ -49,7 +49,7 @@ export default function ServicesHero({ stage }: { stage: StageItem[] }) {
               </span>
               <h1 className="display text-[12.6vw] leading-[0.88] sm:text-[10.5vw] md:text-[3.9rem] lg:text-[5.3rem] xl:text-[6.1rem] 2xl:text-[6.8rem]">
                 {servicesHero.title.map((l, i) => (
-                  <span key={l} data-cs="lines" data-cs-load data-cs-delay={String(0.1 + i * 0.08)} className={cn("block whitespace-nowrap", i === 1 && "text-ink/30")}>
+                  <span key={l} data-cs="lines" data-cs-load data-cs-delay={String(0.1 + i * 0.08)} className={cn("block whitespace-nowrap", i === 1 && "text-ink/45")}>
                     {l.replace(/\.$/, "")}
                     <span className="text-orange">.</span>
                   </span>

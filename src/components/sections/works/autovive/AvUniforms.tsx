@@ -17,7 +17,7 @@ export default function AvUniforms({ assets }: { assets: AvAssets }) {
             </span>
             <h2 className="display text-[3rem] leading-[0.92] sm:text-6xl md:text-7xl lg:text-8xl">
               {uniforms.title.map((l, i) => (
-                <span key={l} data-cs="lines" data-cs-delay={String(i * 0.08)} className={i ? "block text-ink/30" : "block"}>
+                <span key={l} data-cs="lines" data-cs-delay={String(i * 0.08)} className={i ? "block text-ink/45" : "block"}>
                   {l}
                 </span>
               ))}

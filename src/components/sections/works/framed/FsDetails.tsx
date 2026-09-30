@@ -17,7 +17,7 @@ export default function FsDetails({ assets }: { assets: FsAssets }) {
             </span>
             <h2 className="display text-[2.6rem] leading-[0.95] sm:text-5xl md:text-6xl lg:text-7xl">
               {details.title.map((l, i) => (
-                <span key={l} data-cs="lines" data-cs-delay={String(i * 0.08)} className={`block ${i ? "text-ink/30" : ""}`}>
+                <span key={l} data-cs="lines" data-cs-delay={String(i * 0.08)} className={`block ${i ? "text-ink/45" : ""}`}>
                   {l}
                 </span>
               ))}

@@ -81,7 +81,7 @@ export default function HomeWork() {
           {/* copy */}
           <div className="relative z-10 flex flex-col justify-between gap-12 p-7 md:p-12 lg:p-16">
             <div className="flex items-center gap-3 text-[11px] uppercase tracking-[0.28em] text-cream/60">
-              <span className="rounded-full bg-orange px-3 py-1 text-cream">{f.label}</span>
+              <span className="rounded-full bg-orange px-3 py-1 text-ink">{f.label}</span>
               <span>
                 {jma.category} · {jma.year}
               </span>
