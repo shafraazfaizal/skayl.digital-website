@@ -2,7 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
-/* --font-cal-sans and --font-inter are provided by next/font (see layout.tsx). */
+/* --font-display (Bricolage Grotesque) and --font-body (Hanken Grotesk) are
+   provided by next/font (see layout.tsx).
+   The two old names below point at the new fonts, so anything that still
+   says --font-cal-sans or --font-inter (e.g. tailwind.config) keeps working. */
+html {
+  --font-cal-sans: var(--font-display);
+  --font-inter: var(--font-body);
+  /* Headline thickness. Cal Sans only came in one weight, which looked
+     semi-bold; 600 in Bricolage matches that. 700 = bolder, 500 = lighter. */
+  --display-weight: 600;
+}
+
+/* Every headline in the display font gets the headline weight, even where a
+   component says font-normal (left over from Cal Sans, which had no bold). */
+html h1,
+html h2,
+html .font-display,
+html .display,
+html .display-h1,
+html .display-h2,
+html .giant-heading {
+  font-weight: var(--display-weight, 600) !important;
+}
 
 @layer base {
   html {
@@ -14,7 +36,7 @@
     text-rendering: optimizeLegibility;
     /* GSAP ScrollSmoother-friendly: no native smooth-scroll fighting it */
   }
-  /* Cal Sans + Inter are both used at Regular (400) — exactly as in Framer */
+  /* Plain headings default to Regular; display headlines use --display-weight. */
   h1, h2, h3, h4, h5, h6 {
     font-weight: 400;
   }
@@ -30,20 +52,17 @@
   .display {
     @apply font-display font-normal tracking-tightest;
   }
-  /* Display heading helpers — these render in Cal Sans (the display face).
-     Without these definitions the classes were inert and headings silently
-     fell back to Inter. */
+  /* Display heading helpers — these render in Bricolage Grotesque. */
   .display-h1,
   .display-h2 {
     @apply font-display font-normal tracking-tightest;
   }
 }
 
-/* The oversized, edge-bleeding section heading — masked fade like Framer's
-   "Cal Sans/H2 204" treatment. The text is clipped by a vertical gradient
+/* The oversized, edge-bleeding section heading — masked fade treatment. The text is clipped by a vertical gradient
    so it dissolves toward the bottom edge of its frame. */
 .giant-heading {
-  font-family: var(--font-cal-sans);
+  font-family: var(--font-display);
   font-weight: 400;
   letter-spacing: -0.02em;
   line-height: 1;

@@ -17,8 +17,8 @@ const config: Config = {
         line: "rgba(15,5,5,0.12)", // hairline borders
       },
       fontFamily: {
-        display: ["var(--font-cal-sans)", "system-ui", "sans-serif"],
-        sans: ["var(--font-inter)", "system-ui", "sans-serif"],
+        display: ["var(--font-display)", "system-ui", "sans-serif"],
+        sans: ["var(--font-body)", "system-ui", "sans-serif"],
       },
       maxWidth: {
         container: "1280px",

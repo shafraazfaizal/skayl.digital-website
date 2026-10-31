@@ -1,26 +1,28 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import localFont from "next/font/local";
+import { Bricolage_Grotesque, Hanken_Grotesk } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Cursor from "@/components/layout/Cursor";
 import SmoothScroll from "@/components/layout/SmoothScroll";
 
-const inter = Inter({
+// Brand typefaces. next/font downloads these at build time and serves them
+// from our own domain, so nothing loads from Google when someone visits.
+// It also generates size-matched fallbacks, so text doesn't jump on load.
+
+// Headlines: Bricolage Grotesque (variable, with the optical-size axis so
+// big headlines automatically use the tighter display cut).
+const display = Bricolage_Grotesque({
   subsets: ["latin"],
-  variable: "--font-inter",
-  weight: ["400", "500", "600"],
+  variable: "--font-display",
+  axes: ["opsz"],
   display: "swap",
 });
 
-// Cal Sans — the display face used across Framer (single 400 weight).
-// Self-hosted so Next.js can read the file and generate a size-matched
-// fallback (Google-hosted Cal Sans has no fallback metrics).
-const calSans = localFont({
-  src: "./fonts/cal-sans-latin-400.woff2",
-  variable: "--font-cal-sans",
-  weight: "400",
+// Body and interface: Hanken Grotesk (variable, all weights).
+const body = Hanken_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-body",
   display: "swap",
 });
 
@@ -54,7 +56,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${calSans.variable}`}>
+    <html lang="en" className={`${display.variable} ${body.variable}`}>
       <body>
         <Cursor />
         <SmoothScroll>

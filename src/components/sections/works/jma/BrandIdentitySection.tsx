@@ -2,12 +2,17 @@ import Container from "@/components/ui/Container";
 import { Eyebrow } from "@/components/case-study/Layout";
 import MediaSlot from "@/components/case-study/MediaSlot";
 import { jma, type JmaAssets } from "@/content/jma-case-study";
+import { Inter } from "next/font/google";
 import { jakarta, notoSerifDisplay } from "./fonts";
+
+// JMA's own body font. Loaded only for this sample, so the case study shows
+// their real brand type, not SKAYL's Hanken Grotesk.
+const jmaInter = Inter({ subsets: ["latin"], weight: "400", display: "swap" });
 
 const fontFor = {
   jakarta: `${jakarta.className} font-extrabold tracking-[-0.03em]`,
   serif: `${notoSerifDisplay.className} italic text-[#C9A84C]`,
-  inter: "font-sans",
+  inter: `${jmaInter.className} !font-normal`,
 } as const;
 
 // 05 — Brand identity, presented at editorial scale: logo, palette, type,
