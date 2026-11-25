@@ -1,9 +1,11 @@
 import Link from "next/link";
+import CopyLinkButton from "@/components/discovery/admin/CopyLinkButton";
 import StatusBadge from "@/components/discovery/admin/StatusBadge";
 import { Card, Eyebrow, Headline, PillLink } from "@/components/discovery/ui";
 import { requireAdmin } from "@/lib/discovery/admin-auth";
 import { displayStatus, LINK_COLUMNS, type DiscoveryLink } from "@/lib/discovery/links";
 import { SECTIONS, type SectionId } from "@/lib/discovery/questions";
+import { revealLinks } from "@/lib/discovery/reveal";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 
 export const dynamic = "force-dynamic";
@@ -30,6 +32,7 @@ export default async function DiscoveryAdminPage() {
     console.error("[admin] couldn't load discovery links", err);
   }
 
+  const urls = problem ? {} : await revealLinks(links.map((l) => l.id)).catch(() => ({}) as Record<string, string>);
   const statuses = links.map(displayStatus);
   const stats = [
     { label: "All links", value: links.length },
@@ -77,7 +80,7 @@ export default async function DiscoveryAdminPage() {
             </Card>
           ) : (
             <Card className="mt-4 overflow-hidden">
-              <div className="hidden grid-cols-[minmax(0,2.2fr)_minmax(0,1.6fr)_minmax(0,1fr)_minmax(0,1.1fr)_minmax(0,1fr)_24px] gap-6 border-b border-line px-8 py-4 text-[11px] font-medium uppercase tracking-[0.2em] text-muted lg:grid">
+              <div className="hidden grid-cols-[minmax(0,2.2fr)_minmax(0,1.6fr)_minmax(0,1fr)_minmax(0,1.1fr)_minmax(0,1fr)_112px] gap-6 border-b border-line px-8 py-4 text-[11px] font-medium uppercase tracking-[0.2em] text-muted lg:grid">
                 <span>Client</span>
                 <span>Sections</span>
                 <span>Expires</span>
@@ -87,11 +90,9 @@ export default async function DiscoveryAdminPage() {
               </div>
               <ul>
                 {links.map((l, i) => (
-                  <li key={l.id} className={i > 0 ? "border-t border-line" : ""}>
-                    <Link
-                      href={`/admin/discovery/${l.id}`}
-                      className="group grid gap-3 px-5 py-5 transition-colors hover:bg-ink/[0.025] sm:px-7 lg:grid-cols-[minmax(0,2.2fr)_minmax(0,1.6fr)_minmax(0,1fr)_minmax(0,1.1fr)_minmax(0,1fr)_24px] lg:items-center lg:gap-6 lg:px-8"
-                    >
+                  <li key={l.id} className={`group relative transition-colors hover:bg-ink/[0.025] ${i > 0 ? "border-t border-line" : ""}`}>
+                    <Link href={`/admin/discovery/${l.id}`} className="absolute inset-0 z-0" aria-label={`Open ${l.client_name}`} />
+                    <div className="pointer-events-none relative grid gap-3 px-5 py-5 sm:px-7 lg:grid-cols-[minmax(0,2.2fr)_minmax(0,1.6fr)_minmax(0,1fr)_minmax(0,1.1fr)_minmax(0,1fr)_112px] lg:items-center lg:gap-6 lg:px-8">
                       <span className="flex items-start justify-between gap-3">
                         <span className="min-w-0">
                           <span dir="auto" className="block truncate text-[17px] font-medium text-ink">
@@ -124,10 +125,16 @@ export default async function DiscoveryAdminPage() {
                         <span className="lg:hidden">Last activity </span>
                         {when(l.last_activity_at ?? l.opened_at)}
                       </span>
-                      <span aria-hidden className="hidden text-ink/30 transition-transform duration-300 group-hover:translate-x-1 group-hover:text-ink lg:block">
-                        →
+                      <span className="pointer-events-auto flex lg:justify-end">
+                        {urls[l.id] ? (
+                          <CopyLinkButton url={urls[l.id]} label={l.client_name} />
+                        ) : (
+                          <span aria-hidden className="hidden text-ink/30 transition-transform duration-300 group-hover:translate-x-1 group-hover:text-ink lg:block">
+                            →
+                          </span>
+                        )}
                       </span>
-                    </Link>
+                    </div>
                   </li>
                 ))}
               </ul>

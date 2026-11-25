@@ -1,7 +1,6 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import { z } from "zod";
 import { requireAdmin } from "@/lib/discovery/admin-auth";
@@ -10,7 +9,8 @@ import { isSelectableSection, overridesSchema, type Answers } from "@/lib/discov
 import { findLinkById, findResponse } from "@/lib/discovery/links";
 import { pdfFileName } from "@/lib/discovery/pdf/DiscoveryPdf";
 import { DEFAULT_EXPIRY_DAYS, PDF_BUCKET, linkUrl } from "@/lib/discovery/site";
-import { hashToken, newToken } from "@/lib/discovery/token";
+import { requestOrigin } from "@/lib/discovery/reveal";
+import { encryptToken, hashToken, newToken } from "@/lib/discovery/token";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import { supabaseServer } from "@/lib/supabase/server";
 
@@ -58,6 +58,7 @@ export async function createLink(input: CreateLinkInput): Promise<Result<{ id: s
     .from("discovery_links")
     .insert({
       token_hash: hashToken(token),
+      token_encrypted: encryptToken(token),
       ref,
       client_name: v.clientName,
       organisation: v.organisation || null,
@@ -73,7 +74,7 @@ export async function createLink(input: CreateLinkInput): Promise<Result<{ id: s
   if (error || !data) return { ok: false, error: "Couldn’t save the link. Please try again." };
 
   revalidatePath("/admin/discovery");
-  return { ok: true, id: data.id as string, url: linkUrl(token, (await headers()).get("origin")), ref };
+  return { ok: true, id: data.id as string, url: linkUrl(token, await requestOrigin()), ref };
 }
 
 export async function reopenLink(id: string, days: number): Promise<Result<{ expiresAt: string }>> {
@@ -103,10 +104,14 @@ export async function revokeLink(id: string): Promise<Result> {
 export async function rotateLink(id: string): Promise<Result<{ url: string }>> {
   await requireAdmin();
   const token = newToken();
-  const { error } = await supabaseAdmin().from("discovery_links").update({ token_hash: hashToken(token) }).eq("id", id);
+  const { error } = await supabaseAdmin()
+    .from("discovery_links")
+    .update({ token_hash: hashToken(token), token_encrypted: encryptToken(token) })
+    .eq("id", id);
   if (error) return { ok: false, error: "Couldn’t create a new link." };
+  revalidatePath("/admin/discovery");
   revalidatePath(`/admin/discovery/${id}`);
-  return { ok: true, url: linkUrl(token, (await headers()).get("origin")) };
+  return { ok: true, url: linkUrl(token, await requestOrigin()) };
 }
 
 /** A short-lived download link for the submission PDF. Builds the PDF first if it's missing. */
@@ -131,6 +136,27 @@ export async function getPdfUrl(id: string): Promise<Result<{ url: string }>> {
     .createSignedUrl(path, 120, { download: pdfFileName(link.ref, link.client_name) });
   if (error || !data) return { ok: false, error: "Couldn’t get the PDF." };
   return { ok: true, url: data.signedUrl };
+}
+
+/** Delete a link for good: the link, the client's answers and the stored PDF. */
+export async function deleteLink(id: string): Promise<Result> {
+  await requireAdmin();
+  const db = supabaseAdmin();
+  const link = await findLinkById(id);
+  if (!link) return { ok: false, error: "Link not found." };
+
+  // Remove the PDFs first (everything stored under this link's folder).
+  const { data: files } = await db.storage.from(PDF_BUCKET).list(id);
+  if (files?.length) {
+    const { error: storageError } = await db.storage.from(PDF_BUCKET).remove(files.map((f) => `${id}/${f.name}`));
+    if (storageError) console.error("[admin] couldn't delete PDFs", storageError);
+  }
+
+  // Answers are removed automatically with the link (on delete cascade).
+  const { error } = await db.from("discovery_links").delete().eq("id", id);
+  if (error) return { ok: false, error: "Couldn’t delete the link." };
+  revalidatePath("/admin/discovery");
+  return { ok: true };
 }
 
 export async function signOut() {

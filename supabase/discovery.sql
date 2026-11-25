@@ -8,6 +8,7 @@
 create table if not exists public.discovery_links (
   id uuid primary key default gen_random_uuid(),
   token_hash text not null unique,
+  token_encrypted text,                           -- the token encrypted with DISCOVERY_LINK_SECRET, so the admin can copy it again
   ref text not null unique,                       -- e.g. SKL-D-2026-001
   client_name text not null,
   organisation text,
@@ -24,6 +25,8 @@ create table if not exists public.discovery_links (
   submitted_at timestamptz,
   created_at timestamptz not null default now()
 );
+
+alter table public.discovery_links add column if not exists token_encrypted text;
 
 create index if not exists discovery_links_created_at_idx on public.discovery_links (created_at desc);
 

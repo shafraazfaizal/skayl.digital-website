@@ -10,7 +10,8 @@ Private, one-per-client forms SKAYL sends before quoting. They replace the email
 - **On submit:** a PDF is generated and stored in the private `discovery-pdfs` bucket. The client gets a copy by
   email, and SKAYL gets it too, with a link to the submission in the admin.
 - **Admin actions:** Download PDF, Reopen (unlock with a new expiry), Revoke, Duplicate (same settings, new client),
-  New link (replaces a lost link; the old one stops working).
+  New link (the old one stops working), Delete (removes the link, answers and PDF for good). Links can be copied again
+  from the list or the link's page at any time.
 
 ## Where things live
 
@@ -29,7 +30,8 @@ Everything else (form, validation, admin, PDF, emails) follows.
 
 ## Privacy
 
-- Only a SHA-256 hash of each token is stored. Tokens are 32 random bytes.
+- Links are looked up by a SHA-256 hash of the token (32 random bytes). A copy of the token is stored encrypted
+  (AES-256-GCM) with `DISCOVERY_LINK_SECRET`, so the admin can copy it again; the database alone can't open a form.
 - `/discovery`, `/admin` and `/auth` are `noindex`, send `X-Robots-Tag`, `Cache-Control: no-store` and
   `Referrer-Policy: no-referrer`, are disallowed in `robots.txt` and are not in the sitemap.
 - All tables have row-level security on with no public policies. Only server code (service role key) reads them.
@@ -43,6 +45,7 @@ Everything else (form, validation, admin, PDF, emails) follows.
 | `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Supabase anon / publishable key (admin sign-in) |
 | `SUPABASE_SERVICE_ROLE_KEY` | Supabase service role / secret key (server only) |
 | `ADMIN_EMAILS` | Comma-separated emails allowed into the admin |
+| `DISCOVERY_LINK_SECRET` | Long random string. Encrypts links so the admin can copy them again |
 | `NEXT_PUBLIC_SITE_URL` | `https://www.skayl.digital` (used in links and emails) |
 | `RESEND_API_KEY` | Already set for the contact form |
 | `CONTACT_TO_EMAIL` | Optional. Where submissions go (defaults to hello@skayl.digital) |

@@ -13,6 +13,7 @@ import {
   WEBSITE_AREA_PRESETS,
   type SelectableSectionId,
 } from "@/lib/discovery/questions";
+import { copyText as copy, whatsappMessage } from "@/lib/discovery/share";
 import { cn } from "@/lib/utils";
 import { Card, Check, Eyebrow, Headline, InkPanel, PillButton } from "../ui";
 
@@ -46,21 +47,6 @@ const same = (a: string[], b: string[]) => a.length === b.length && a.every((x, 
 function defaultOf(id: string) {
   const q = QUESTIONS.find((x) => x.id === id)!;
   return { label: q.label, options: q.options ?? [] };
-}
-
-async function copy(text: string) {
-  try {
-    await navigator.clipboard.writeText(text);
-    return true;
-  } catch {
-    const ta = document.createElement("textarea");
-    ta.value = text;
-    document.body.appendChild(ta);
-    ta.select();
-    const ok = document.execCommand("copy");
-    ta.remove();
-    return ok;
-  }
 }
 
 /* ── Small parts ──────────────────────────────────────────────────────────── */
@@ -168,9 +154,7 @@ export default function NewLinkForm({ defaults }: { defaults: NewLinkDefaults })
     });
   };
 
-  const whatsapp = created
-    ? `${greeting.trim() ? `${greeting.trim()}\n\n` : ""}Here’s your private SKAYL discovery form. It takes about ${minutes} minutes, saves as you go, and helps us prepare an accurate quote for you:\n\n${created.url}\n\nAny questions, just message us.`
-    : "";
+  const whatsapp = created ? whatsappMessage(greeting, minutes, created.url) : "";
 
   const doCopy = async (what: "link" | "whatsapp") => {
     if (!created) return;
@@ -188,7 +172,7 @@ export default function NewLinkForm({ defaults }: { defaults: NewLinkDefaults })
           <Eyebrow tone="dark">Link created · {created.ref}</Eyebrow>
           <Headline className="mt-7 text-[3rem] text-cream md:text-[4.6rem]">Ready to send</Headline>
           <p className="mt-6 max-w-[46ch] text-[16px] leading-relaxed text-cream/70">
-            Copy it now. For security the full link is only shown once. If it ever gets lost, open the link’s page and create a new one.
+            Copy it now and send it to the client. You can always copy it again later from the links list or the link’s page.
           </p>
           <div className="mt-10 rounded-[20px] border border-cream/15 bg-cream/[0.06] p-2 pl-5">
             <div className="flex items-center gap-3">

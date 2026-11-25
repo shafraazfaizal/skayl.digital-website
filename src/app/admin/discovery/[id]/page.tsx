@@ -1,12 +1,15 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import AnswerView from "@/components/discovery/AnswerView";
+import ClientLinkCard from "@/components/discovery/admin/ClientLinkCard";
 import LinkActions from "@/components/discovery/admin/LinkActions";
 import StatusBadge from "@/components/discovery/admin/StatusBadge";
 import { ArrowLeft, Card, Eyebrow, Headline } from "@/components/discovery/ui";
 import { requireAdmin } from "@/lib/discovery/admin-auth";
-import { resolveForm, type Answers } from "@/lib/discovery/form";
+import { estimateMinutes, resolveForm, type Answers } from "@/lib/discovery/form";
 import { displayStatus, findLinkById, findResponse } from "@/lib/discovery/links";
+import { revealLinks } from "@/lib/discovery/reveal";
+import { canRevealLinks } from "@/lib/discovery/token";
 
 export const dynamic = "force-dynamic";
 
@@ -26,6 +29,8 @@ export default async function DiscoverySubmissionPage({ params }: { params: Prom
   const answers = (response?.answers ?? {}) as Answers;
   const hasAnswers = Object.keys(answers).length > 0;
   const submitted = link.status === "submitted";
+  const url = (await revealLinks([link.id]).catch(() => ({}) as Record<string, string>))[link.id] ?? null;
+  const canReveal = canRevealLinks();
 
   const meta: [string, string][] = [
     ["Created", when(link.created_at)],
@@ -60,7 +65,9 @@ export default async function DiscoverySubmissionPage({ params }: { params: Prom
         ))}
       </Card>
 
-      <LinkActions id={link.id} status={status} canDownload={submitted || !!response?.pdf_path} />
+      <ClientLinkCard url={url} greeting={link.greeting ?? ""} minutes={estimateMinutes(form)} canReveal={canReveal} />
+
+      <LinkActions id={link.id} clientName={link.client_name} status={status} canDownload={submitted || !!response?.pdf_path} canReveal={canReveal} />
 
       {submitted && response && (
         <div className="mt-4 flex flex-wrap gap-x-6 gap-y-1 text-[13.5px] text-muted">

@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState, useTransition } from "react";
-import { getPdfUrl, reopenLink, revokeLink, rotateLink } from "@/app/admin/discovery/actions";
+import { deleteLink, getPdfUrl, reopenLink, revokeLink, rotateLink } from "@/app/admin/discovery/actions";
 import type { DisplayStatus } from "@/lib/discovery/links";
 import { DEFAULT_EXPIRY_DAYS } from "@/lib/discovery/site";
 
@@ -12,7 +12,7 @@ const primary =
 const secondary =
   "inline-flex h-12 items-center justify-center rounded-full border border-ink/20 px-6 text-[12px] font-medium uppercase tracking-[0.2em] text-ink transition-colors duration-300 hover:border-ink disabled:opacity-60";
 
-export default function LinkActions({ id, status, canDownload }: { id: string; status: DisplayStatus; canDownload: boolean }) {
+export default function LinkActions({ id, clientName, status, canDownload, canReveal }: { id: string; clientName: string; status: DisplayStatus; canDownload: boolean; canReveal: boolean }) {
   const router = useRouter();
   const [pending, start] = useTransition();
   const [message, setMessage] = useState("");
@@ -62,7 +62,22 @@ export default function LinkActions({ id, status, canDownload }: { id: string; s
     run(async () => {
       const res = await rotateLink(id);
       if (!res.ok) return setError(res.error);
-      setFreshUrl(res.url);
+      if (canReveal) {
+        setMessage("New link created. Copy it from “Client link” above.");
+        router.refresh();
+      } else {
+        setFreshUrl(res.url);
+      }
+    });
+  };
+
+  const remove = () => {
+    if (!window.confirm(`Delete the link for ${clientName}?\n\nThis permanently removes the link, their answers and the PDF. It can’t be undone.`)) return;
+    run(async () => {
+      const res = await deleteLink(id);
+      if (!res.ok) return setError(res.error);
+      router.push("/admin/discovery");
+      router.refresh();
     });
   };
 
@@ -90,6 +105,14 @@ export default function LinkActions({ id, status, canDownload }: { id: string; s
             Revoke
           </button>
         )}
+        <button
+          type="button"
+          onClick={remove}
+          disabled={pending}
+          className="inline-flex h-12 items-center justify-center rounded-full border border-[#B3380F]/30 px-6 text-[12px] font-medium uppercase tracking-[0.2em] text-[#B3380F] transition-colors duration-300 hover:border-[#B3380F] hover:bg-[#B3380F]/[0.06] disabled:opacity-60 md:ml-auto"
+        >
+          Delete
+        </button>
       </div>
 
       {canReopen && (
