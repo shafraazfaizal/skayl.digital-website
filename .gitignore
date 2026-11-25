@@ -10,7 +10,7 @@ next-env.d.ts
 
 # environment variables (keep the example file)
 .env*
-!.env.example
+!.env.local
 
 # vercel
 .vercel

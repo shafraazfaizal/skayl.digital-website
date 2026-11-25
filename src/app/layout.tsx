@@ -1,10 +1,6 @@
 import type { Metadata } from "next";
 import { Bricolage_Grotesque, Hanken_Grotesk } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/layout/Navbar";
-import Footer from "@/components/layout/Footer";
-import Cursor from "@/components/layout/Cursor";
-import SmoothScroll from "@/components/layout/SmoothScroll";
 
 // Brand typefaces. next/font downloads these at build time and serves them
 // from our own domain, so nothing loads from Google when someone visits.
@@ -57,14 +53,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${display.variable} ${body.variable}`}>
-      <body>
-        <Cursor />
-        <SmoothScroll>
-          <Navbar />
-          <main>{children}</main>
-          <Footer />
-        </SmoothScroll>
-      </body>
+      <body>{children}</body>
     </html>
   );
 }

@@ -12,9 +12,9 @@ export default function HomeHero() {
         <div className="grid gap-8 md:min-h-[calc(100svh-9rem)] md:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] md:gap-8 lg:gap-12">
           <div className="flex flex-col justify-center gap-10 pt-6 md:gap-8 md:py-2">
             <div className="flex flex-col gap-6 md:gap-7">
-              <span data-cs="fade" data-cs-load className="text-[11px] uppercase tracking-[0.28em] text-muted md:text-xs">
+              {/* <span data-cs="fade" data-cs-load className="text-[11px] uppercase tracking-[0.28em] text-muted md:text-xs">
                 {homeHero.eyebrow}
-              </span>
+              </span> */}
               <h1 className="display text-[13.4vw] leading-[0.88] sm:text-[11vw] md:text-[min(3.6rem,9.5svh)] lg:text-[min(4.5rem,10svh)] xl:text-[min(5.8rem,10svh)] 2xl:text-[min(7rem,10.5svh)]">
                 {homeHero.muted.map((l, i) => (
                   <span key={l} data-cs="lines" data-cs-load data-cs-delay={String(0.1 + i * 0.08)} className="block whitespace-nowrap text-ink/45">

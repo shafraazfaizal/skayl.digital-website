@@ -20,7 +20,7 @@ export const whyUs = [
 // Facts only. No invented clients, quotes, results or numbers.
 
 export const homeHero = {
-  eyebrow: "SKAYL — Creative studio",
+  // eyebrow: "SKAYL — Creative studio",
   muted: ["We don’t work", "for you."],
   strong: ["We work", "with you."],
   lines: ["One embedded team for brand, web and content.", "Strategy / Design / Development / Content.", "UK & Sri Lanka — working globally."],
